@@ -1,0 +1,172 @@
+1. 실습 환경 준비
+1) Visual Studio Code설치
+2) Visual Studio Code의 좌측에 위치한 "확장(Extension)" 메뉴에서 Live Studio 설치
+
+2. 경로
+1) 경로 표시법
+/     // 루트 디렉토리
+./    // 현재 디렉토리
+../    // 상위 디렉토리
+../../  // 2번 상위 디렉토리
+
+2) 경로 지정방법: 절대경로 or 상대경로
+- 루트 디렉토리를 이용한 절대경로
+- 각 HTML별로 상대경로 지정 : 유리. 폴더 구조를 바꿀 때 수정할 사항이 적어진다.
+
+3. html 파일 생성
+1) VS Code에서 "!"를 입력하고 엔터치면, 기본적인 html template를 입력해 준다.
+
+4. html tags
+1) tags 분류
+- 블록 스타일 Tags: 블록 태그의 크기는 자신이 감싸는 콘텐츠와 상관없이 자신의 영역을 가지고 있음. 기본적으로 window의 width를 다 채우는 형태로 작동하고, 줄바꿈이 일어난다.
+  섹션: <section><nav><aside><article>
+  블록: <div><header><main><footer>
+  제목: <h/><hgroup/>..  // 위 아래 Margin이 조금 존재. 
+  목록: <ul/><ol/><dl/>.. // 왼쪽에 어느 정도의 Margin이 존재.
+  문장: <p/>
+  표: <table/>
+  입력폼: <form/>
+
+- 인라인 Tags:  줄바꿈이 없음. 자신이 감싸는 콘텐츠의 크기가 자신의 크기가 됨.
+  하이퍼 텍스트: <a/>
+  글자체 Bold: <b/>
+  밑줄: <u/>
+  폰트: <font/> => css로 대체 가능
+  스타일 지정: <span> => css로 대체 가능
+  굵은 텍스트: <strong> => css로 대체 가능
+  한줄바꿈: <br>            // 사용자가 Enter키를 친것은 한줄에서 나옴.
+  현재 사용가능한 인라인 Tags: css로 대체가능한 꾸미는 Tag들은 사라지고 있다.
+    <a>, <abbr>, <acronym>, <audio>, <br>, <bdi>, <bdo>, <big>, <br>, <button>, <canvas>, <cite>, <code>, <data>, <datalist>, <del>,
+    <dfn>, <em>, <embed>, <i>, <iframe>, <img>, <input>, <ins>, <kbd>, <label>, <nao>, <mark>, <meter>, <noscript>, <object>, <output>,
+    <picture>, <progress>, <q>, <ruby>, <s>, <samp>, <script>, <select>, <slot>, <small>, <span>, <strong>, <sub>, <sup>, <svg>, <template>,
+    <textarea>, <time>, <u>, <tt>, <var>, <video>, <wbr>
+
+- 영역 나누기: <div> => 위의 것들에 해당되지 않는 경우처럼 애매할 때. 기본적으로 window의 width를 다 채우는 형태로 작동하므로, 줄바꿈이 일어난다.
+
+2) 제목 태그 - 제목을 글자크기에 따라서 아래와 같이 나뉨.
+<h1>, <h2>, <h3>, <h4>, <h5>, <h6>
+
+3) 목록 태그
+ - <ul></ul>: unordered list.
+ - <li></li>: 목록의 item, list item의 약자
+ - <ol></ol>: ordered list. 숫자가 라벨링됨.
+ - <dl></dl>: 설명과 관련된 list
+ - <dt></dt>: 용어의 정의
+ - <dd></dd>: 용어의 설명
+
+예) 
+<ul>
+  <li>학습가이드</li>
+  <li>강좌선택</li>
+  <li>AnswerIs</li>
+</ul>
+
+<ol>
+  <li>학습가이드</li>
+  <li>강좌선택</li>
+  <li>AnswerIs</li>
+</ol>
+
+<dl>
+  <dt>어묵탕</dt>
+  <dd>따뜻한 국물..</dd>
+  <dt>떡복이</dt>
+  <dd>맵고 쫄깃..</dd>        
+</dl>
+
+4) form에서 주로 사용하는 태그
+- <fieldset>: 묶음 표시     
+- <legend>: 묶음의 표시글
+- <label>: 라벨
+- <input type="text"/>: input text
+- <input type="submit"/>: 제출 버튼
+예)<form>
+        <fieldset>
+          <legend>검색입력필드</legend>  
+          <label>과정검색</label>
+          <input type="text"/>
+          <input type="submit" value="검색">
+        </fieldset>
+    </form>
+4) Table 그리기
+- <table>: 테이블
+- <table border="1">: 테이블 경계선 굵기
+- <tr>: 테이블의 ROW
+- <td>: 테이블의 Column
+
+6) HTML5(+Semantic Web) TAGs
+: 섹션 Tag의 종류들 -> <section>, <aside>, <nav> 
+- <header>: 웹 문서 맨 윗부분에 있으며 웹 사이트 이름, 글로벌 링크(로그인, 회원가입, 사이트맵, 언어 선택등 웹사이트 어느 곳에서든지 이용할 수 있는 링크)등으로 구성된 영역이다.
+                사이트 이름(로고), 내비게이션, 헤드라인, 검색 등으로 구성된다.
+                과거에는 <div id="header">와 같이 사용했었다.
+                문서나 각 section, article 의 헤더 부분에 사용가능하며, 그것들의 제목이나 간단한 소개 콘텐츠를 담을 수 있다.
+                브라우저가 헤더영역을 인식할 수 있게되면 스크린리더의 내비게이션과 검색엔진의 색인에 도움을 줄 수 있다.
+예)
+<header>
+    <h1>LOGO</h1>
+    <h2>검색</h2>
+    <input type="text">
+</header>
+- <main>: HTML5 권고후보에 main요소가 추가되었다. 문서내 main요소가 나오는 것은 1번만 허용
+	 콘텐츠모델은 Flow content. 단, main요소를 article, aside, footer, header, nav요소의 하위로 사용하지 않음
+	섹션 콘텐츠가 아니기 때문에 아웃라인 생성하지 않음
+
+- <aside>: 섹션 Tag 중의 하나. 페이지 전체 내용과는 어느정도 관련성이 있지만 주요 내용과는 직접적인 연관성은 없는 분리된 내용을 담고 있다.
+	  흔히 사이드바라고 부르는 영역으로 배너, 용어 설명, 관련 상품 등 본문 내용과 직접적인 관련성이 적거나 없는 내용으로 구성된다.
+	  aside 요소로 구성된 것을 검색엔진은 무시하고 본문 위주로 색인을 진행할 수 있고, 스크린리더 사용자는 해당 영역이 어떤 성격의 영역인지 신속하게 파악할 수 있으므로, 곧바로 다른 영역으로 이동할 수도 있다.
+
+- <footer>: 웹 문서 맨 아래쪽에 있으며 저작권, 연락처등으로 구성된 영역이다.
+	   푸터는 바닥 영역 또는 꼬리말을 지칭하는데, 저작권, 연락정보 등 본문과의 관련성은 있지만 본문에는 담기 어려운 내용을 담는다.
+	   일반적으로 푸터 영역은 한 문서 내에서 한 번만 제공되지만 section 요소나 article 요소 내에 있는 footer 요소는 해당 영역에 관한 꼬리말을 표시할 수 있다.
+	   맨위로 가기 링크나 헤더의 메인 내비게이션도 반복 제공을 위해 푸터 영역에 둘 수 있다.
+
+- <nav>: 섹션 Tag 중의 하나. 섹션이지만 링크를 모아둠. 목적지로 이동할 수 있도록 링크를 별도로 모아둔 영역.
+	링크 중에서 중요도가 높은 링크를 체계적으로 구성해 놓은 것으로 단순 본문 링크와 메뉴(카테고리) 성격의 링크인지 확인이 가능하다.
+	ul, li, a 요소들을 여전히 함께 사용해야 한다.
+	브라우저가 네비게이션 영역을 알 수 있게 되면 스크린리더의 내비게이션과 검색엔진의 색인에도 도움을 줄 수 있다.                
+예)
+<nav>
+    <h1>메인 내비게이션</h1>
+    <ul>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+    </ul>
+</nav>
+
+- <section>: 섹션 Tag 중의 하나. 섹션을 표시한다. 내용적 흐름과 구조를 만들기 위해 내용을 나누는 용도이다.
+  	    같은 성격의 내용, 즉 관련있는 내용을 section 요소로 묶어 표시한다.
+	    뉴스와 광고 섹션 처럼 서로 다른 성격을 지닌 것들을 section 요소로 표시하면 영역 구분이 아주 명확해진다.
+	    탭과 같은 상위 주제 아래에 하위 주제로 엮인 탭 방식의 구성일때 각각의 탭을 section 요소로 표시할 수 있다.
+	    섹션은 독립적인 영역이라 섹션 내에도 헤더(header)와 푸터(footer)를 둘 수 있다. 이것은 섹션마다 나름의 제목 체계를 가질 수 있다는 것을 의미하며, 섹션마다 H1 요소를 가질 수 있게 되었다.
+	    스크린리더 사용자는 섹션 단위로 이동할 수 있으므로 문서 내 내비게이션이 좀 더 수월해지고 검색엔진은 특정 섹션 중심으로 색인 활동을 할 수 있으므로 검색엔진의 효율성을 높일 수 있다.
+예)
+<section>
+    <article>
+        <h1>제목</h1>
+        <p>본문</p>
+    </article>
+</section>
+
+- <article>: 독립적으로 구성된 글을 표시한다. 본문과 별개로 구성되어 다른 영역에 영향을 주거나 받지 않고 독립적으로 배포되거나 재사용할 수 있다.
+   	   게시판의 게시물, 블로그 포스트, 댓글, 위젯에 담긴 콘텐츠등이 article에 해당한다.
+	   일반적인 상황에서는 section 요소가 article 요소를 포함한다. 하지만 독립적으로 구성된 내용이 몇 개의 섹션으로 구성된 경우라면 article 요소가 section 요소를 포함할 수도 있다.
+	   section 요소가 관련 있는 내용을 묶는 역할이라면 article 요소는 관련 있는 내용 중에서 독립적으로 구성된 글을 별도로 묶는 역할이다.
+	   article 영역 내에 헤더(header)와 푸터(footer)를 둘 수 있다. article 요소안에 article 요소가 들어갈 경우, 밖의 요소의 내용과 안쪽의 요소의 내용이 관련이 있는 내용이라는 것을 의미한다.
+예)
+<article>
+    <header>
+        <h1>HTML5 구조</h1>
+        <p>Published On <time datetime="2013-01-22">2013년1월22일</time></p>
+     </header>
+     <p>본문 내용</p>
+     <footer>Posted in unclepapa</footer>
+     <article> <!-- 코멘트 시작 -->
+         <header> 작성자:<a href="">나그네</a> at <time datetime="2013-01-22T08:45">2013년1월22일 08:45</time></header>
+         <p>코멘트 내용</p>
+     </article> <!-- 코멘트 끝 -->
+</article>
+
+5. Web Developer
+- Chrome 브라우저에 설치하는 웹앱
+- "Google web store"검색 => chrome 웹 스토어
+
