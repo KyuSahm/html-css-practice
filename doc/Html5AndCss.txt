@@ -198,7 +198,9 @@
    ....
    <li><a href="" class="g1">학습가이드</a></li>
 </style>
-4) 아이디로 적용 => 한 HTML의 Element에는 ID가 중복되면 안됨. 그룹명 앞에 태그명과 구분하기 위해 "#"을 찍음.
+4) 아이디로 적용 => 한 HTML의 Element에는 ID가 중복되면 안됨. 그룹명 앞에 태그명과 구분하기 위해 "#"을 찍음. 
+                            아이디가 두단어 이상인 경우, "-"로 구분. id="main-menu"
+                            Element의 자식들이 존재하는 경우, 다같이 적용됨.
 <style>
     #name1 {
         color:blue;
@@ -207,4 +209,26 @@
 </style>
 ....
 <li><a href="" id="name1">강좌선택</a></li>
-<li><a href="" id="name2">AnswerIs</a></li><!-- id가 중복되면 안됨--> 
+<li><a href="" id="name2">AnswerIs</a></li><!-- id가 중복되면 안됨-->
+
+8. 콤비네이션 연산자(Combinators)
+1) 종류
+- Descendant selectors: A B  => A selector 자손들 중에서 B tag를 찾아라!
+- Child selector: A > B => A selector 자식들 중에서 B selector를 찾아라!
+- Aadjacent sibling selector: A + B => A selector 이웃한 것들 중에서 B selector를 찾아라!
+- General sibling selector: A ~ B => A selector 자식들 중에서 B selector를 찾아라!
+예)
+<style>
+    #main-menu h1{
+      font-size:30px;
+    }
+</style>  
+=> "main-menu" id를 가지는 엘리먼트의 자손들 중, h1 tag에 적용 
+<style>
+    #main-menu>h1{
+      font-size:30px;
+    }
+</style>  
+=> "main-menu" id를 가지는 엘리먼트의 자식 엘리먼트들 중, h1 tag에 적용 
+2) CSS Style 적용 순서
+- 콘텐츠 블록 스타일을 먼저 작업 후, 레이아웃 블록 스타일을 작업("css_style_apply_order.png" 참조)
