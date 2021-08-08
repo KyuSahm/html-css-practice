@@ -97,8 +97,7 @@
 6) HTML5(+Semantic Web) TAGs
 : 섹션 Tag의 종류들 -> <section>, <aside>, <nav> 
 - <header>: 웹 문서 맨 윗부분에 있으며 웹 사이트 이름, 글로벌 링크(로그인, 회원가입, 사이트맵, 언어 선택등 웹사이트 어느 곳에서든지 이용할 수 있는 링크)등으로 구성된 영역이다.
-                사이트 이름(로고), 내비게이션, 헤드라인, 검색 등으로 구성된다.
-                과거에는 <div id="header">와 같이 사용했었다.
+                사이트 이름(로고), 내비게이션, 헤드라인, 검색 등으로 구성된다. 과거에는 <div id="header">와 같이 사용했었다.
                 문서나 각 section, article 의 헤더 부분에 사용가능하며, 그것들의 제목이나 간단한 소개 콘텐츠를 담을 수 있다.
                 브라우저가 헤더영역을 인식할 수 있게되면 스크린리더의 내비게이션과 검색엔진의 색인에 도움을 줄 수 있다.
 예)
@@ -170,3 +169,9 @@
 - Chrome 브라우저에 설치하는 웹앱
 - "Google web store"검색 => chrome 웹 스토어
 
+6. CSS란?
+1) 스타일을 변경하기 위한 명령어 집합: "css_properties-1.png, css_properties-2.png" 파일 참조
+2) 스타일을 적용하지 않아도 기본문서의 Tag가 가지고 있는 스타일이 존재
+3) 개별 적용예
+ <h1 style="color:blue;font-size:5px;">메인메뉴</h1> => 제목의 색깔과 폰트 사이즈 지정
+4) https://developer.mozilla.org/en-US/docs/Web/CSS/Reference => 정확한 CSS properties 설명
