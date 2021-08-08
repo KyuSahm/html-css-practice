@@ -172,6 +172,39 @@
 6. CSS란?
 1) 스타일을 변경하기 위한 명령어 집합: "css_properties-1.png, css_properties-2.png" 파일 참조
 2) 스타일을 적용하지 않아도 기본문서의 Tag가 가지고 있는 스타일이 존재
-3) 개별 적용예
+3) 개별 적용예 => "속성:값;" 형태로 적용. 예를들면, "color:blue;". 하나의 속성이라도 ";"로 끝내야 됨.
  <h1 style="color:blue;font-size:5px;">메인메뉴</h1> => 제목의 색깔과 폰트 사이즈 지정
 4) https://developer.mozilla.org/en-US/docs/Web/CSS/Reference => 정확한 CSS properties 설명
+
+7. 기본 선택자
+1) 태그명, 아이디, 클래스명(그룹명)으로 적용가능
+2) 태그명으로 적용
+<h1 style="font-weight:bold; cold:blue;">제목1</h1>
+<h1 style="font-weight:bold; cold:blue;">제목1</h1>
+<h1 style="font-weight:bold; cold:blue;">제목1</h1>
+=> 반복적인 내용을 한번에 적용(HTML 문서내에 존재하는 h1 tag들에 모두 적용)
+<style>
+    h1
+    {
+        font-weight:bold; cold:blue;
+    }
+</style>
+3) 클래스명(그룹명)으로 적용 => 그룹명 앞에 태그명과 구분하기 위해 "."을 찍음.
+<style>
+   .g1 {
+         color:red;
+         font-weight:bold;
+        }
+   ....
+   <li><a href="" class="g1">학습가이드</a></li>
+</style>
+4) 아이디로 적용 => 한 HTML의 Element에는 ID가 중복되면 안됨. 그룹명 앞에 태그명과 구분하기 위해 "#"을 찍음.
+<style>
+    #name1 {
+        color:blue;
+        font-weight:bold;
+    }
+</style>
+....
+<li><a href="" id="name1">강좌선택</a></li>
+<li><a href="" id="name2">AnswerIs</a></li><!-- id가 중복되면 안됨--> 
