@@ -176,7 +176,7 @@
  <h1 style="color:blue;font-size:5px;">메인메뉴</h1> => 제목의 색깔과 폰트 사이즈 지정
 4) https://developer.mozilla.org/en-US/docs/Web/CSS/Reference => 정확한 CSS properties 설명
 
-7. 기본 선택자
+7. 기본 선택자(Selector)
 1) 태그명, 아이디, 클래스명(그룹명)으로 적용가능
 2) 태그명으로 적용
 <h1 style="font-weight:bold; cold:blue;">제목1</h1>
@@ -213,10 +213,10 @@
 
 8. 콤비네이션 연산자(Combinators)
 1) 종류
-- Descendant selectors: A B  => A selector 자손들 중에서 B tag를 찾아라!
+- Descendant selectors: A B  => A selector 자손들 중에서 B selector를 찾아라!
 - Child selector: A > B => A selector 자식들 중에서 B selector를 찾아라!
-- Aadjacent sibling selector: A + B => A selector 이웃한 것들 중에서 B selector를 찾아라!
-- General sibling selector: A ~ B => A selector 자식들 중에서 B selector를 찾아라!
+- Adjacent sibling selector: A + B => A selector 오른쪽 수평방향으로 바로 이웃한 것(바로 아래 동생) 중에서 B selector를 찾아라!
+- General sibling selector: A ~ B => A selector 오른쪽 수평방향으로 이웃한 것들(동생들) 중에서 B selector를 찾아라!
 예)
 <style>
     #main-menu h1{
@@ -229,6 +229,122 @@
       font-size:30px;
     }
 </style>  
-=> "main-menu" id를 가지는 엘리먼트의 자식 엘리먼트들 중, h1 tag에 적용 
+=> "main-menu" id를 가지는 엘리먼트의 자식 엘리먼트들 중, h1 tag에 적용
+<style>
+    #main-menu>h1+ul{
+      font-size:20px;
+    }
+</style>
+=> "main-menu" id를 가지는 엘리먼트의 자식 엘리먼트들 중, h1 tag에 적용 그리고, h1과 Adjacent sibling selector관계에 있는 ul tag에 적용
+<style>
+    #main-menu>h1{
+      font-size:20px;
+    }
+    #main-menu>ul{
+      font-size:20px;
+    }
+</style>
+=> "main-menu" id를 가지는 엘리먼트의 자식 엘리먼트들 중, h1과 ul tag에 적용. "#main-menu>h1+ul"형식보다 좀 더 자연스러움.
+<style>
+    #main-menu .first{            // "#main-menu *.first"를 의미함. 
+      font-size:100px;
+    }  
+</style>
+<h1 class="first">서두</h1>  // 적용 안됨
+<nav id="main-menu">
+    <h1>메인메뉴</h1>
+    <ul>
+        <li class="first"><a href="">학습가이드</a></li> // main-menu의 자식 엘리먼트이므로 적용됨.
+        <li><a href="">강좌선택</a></li>
+        <li><a href="">AnswerIs</a></li>
+        <li><nav><h1>aaaa</h1></nav></li>
+    </ul>
+</nav>
+=> "main-menu" id를 가지는 엘리먼트의 자손 엘리먼트들 중, "first"란 이름의 class를 가진 엘리먼트에 적용. 
+<style>
+    #main-menu li.first{
+        font-size:50px;
+    }
+</style>
+<nav id="main-menu">
+    <h1>메인메뉴</h1>
+    <ul>
+        <li class="first"><a href="">학습가이드</a></li>
+        <li><a href="" class="first">강좌선택</a></li>
+        <li><a href="">AnswerIs</a></li>
+        <li><nav><h1>aaaa</h1></nav></li>
+    </ul>
+</nav>
+=> "main-menu" id를 가지는 엘리먼트의 <li> 자손 엘리먼트들 중, "first"란 이름의 class를 가진 엘리먼트에만 적용. 
+<style>
+    #main-menu>ul>li.first{
+        font-size:40px;
+        font-weight:bold;
+    }
+</style>
+<nav id="main-menu">
+    <h1>메인메뉴</h1>
+    <ul>
+        <li class="first">
+            <a href="">학습가이드</a>
+            <ul>
+                <li class="first">서브메뉴 1</li>
+                <li>서브메뉴 2</li>
+            </ul>
+        </li>
+        <li><a href="" class="first">강좌선택</a></li>
+        <li><a href="">AnswerIs</a></li>
+        <li><nav><h1>aaaa</h1></nav></li>
+    </ul>
+</nav>
+=> "main-menu" id를 가지는 엘리먼트의 <ul> 자식엘리먼트의 <li> 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트에만 적용. 
+=> 해당 엘리먼트의 하위엘리먼트들도 자동으로 동일한 스타일이 적용됨. 따라서, "학습가이드", "서브메뉴 1", "서브메뉴 2"에도 적용.
+<style>
+    #main-menu>ul>li.first+.aa{
+        font-size:100px;
+        color:red;
+    }
+</style>
+<nav id="main-menu">
+    <h1>메인메뉴</h1>
+    <ul>
+        <li class="first">
+            <a href="">학습가이드</a>
+            <ul>
+                <li class="first">서브메뉴 1</li>
+                <li>서브메뉴 2</li>
+            </ul>
+        </li>
+        <li class="aa"><a href="">강좌선택</a></li>
+        <li class="aa"><a href="">AnswerIs</a></li>
+        <li><nav><h1>aaaa</h1></nav></li>
+    </ul>
+</nav>
+=> "main-menu" id를 가지는 엘리먼트의 <ul> 자식엘리먼트의 <li> 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트에 바로 동생인 "aa"란 이름의 class를 가진 엘리먼트에만 적용. 
+=> 결국, "강좌선택"에는 적용되고, "AnswerIs"에는 적용 안됨.
+<style>
+    #main-menu>ul>li.first~.bb{
+        font-size:50px;
+        color:blue;
+    }
+</style>
+<nav id="main-menu">
+    <h1>메인메뉴</h1>
+    <ul>
+        <li class="first">
+            <a href="">학습가이드</a>
+            <ul>
+                <li class="first">서브메뉴 1</li>
+                <li>서브메뉴 2</li>
+            </ul>
+        </li>
+        <li class="aa"><a href="">강좌선택</a></li>
+        <li class="aa"><a href="">AnswerIs</a></li>
+        <li class="bb"><nav><h1>aaaa</h1></nav></li>
+    </ul>
+</nav>
+=> "main-menu" id를 가지는 엘리먼트의 <ul> 자식엘리먼트의 <li> 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트들에 동생들 중 "bb"란 이름의 class를 가진 엘리먼트에 적용. 
+=> 결국, "aaaa"에 적용
+
 2) CSS Style 적용 순서
 - 콘텐츠 블록 스타일을 먼저 작업 후, 레이아웃 블록 스타일을 작업("css_style_apply_order.png" 참조)

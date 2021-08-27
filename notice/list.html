@@ -4,10 +4,23 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-      #main-menu>h1{
-          font-size:30px;
-      }  
+      #main-menu>h1+ul{
+          font-size:20px;
+      }
+      
+      #main-menu>ul>li.first{
+          font-size:40px;
+          font-weight:bold;
+      }
 
+      #main-menu>ul>li.first+.aa{
+          font-size:30px;
+          color:red;
+      }
+      #main-menu>ul>li.first~.bb{
+          font-size:50px;
+          color:blue;
+      }
     </style>
 </head>
 <body>
@@ -15,15 +28,21 @@
     
     <header>
         <section>
-            <h1>서두</h1>
+            <h1 class="first">서두</h1>
 
             <nav id="main-menu">
                 <h1>메인메뉴</h1>
                 <ul>
-                    <li><a href="">학습가이드</a></li>
-                    <li><a href="">강좌선택</a></li>
-                    <li><a href="">AnswerIs</a></li>
-                    <li><nav><h1>aaaa</h1></nav></li>
+                    <li class="first">
+                        <a href="">학습가이드</a>
+                        <ul>
+                            <li class="first">서브메뉴 1</li>
+                            <li>서브메뉴 2</li>
+                        </ul>
+                    </li>
+                    <li class="aa"><a href="">강좌선택</a></li>
+                    <li class="aa"><a href="">AnswerIs</a></li>
+                    <li class="bb"><nav><h1>aaaa</h1></nav></li>
                 </ul>
             </nav>
 
