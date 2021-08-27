@@ -21,6 +21,16 @@
           font-size:50px;
           color:blue;
       }
+
+      #member-menu a[href]{
+          font-size:30px;
+          color:green;
+      }
+
+      #member-menu a[href="../index.html"]{
+          font-size:30px;
+          color:red;
+      }
     </style>
 </head>
 <body>
@@ -58,12 +68,13 @@
                 </form>
             </section>
 
-            <nav>
+            <nav id="member-menu">
                 <h1>회원메뉴</h1>
                 <ul>
                     <li><a href="../index.html">HOME</a></li>
                     <li><a href="../member/login.html">로그인</a></li>
                     <li><a href="../member/signup-agree.html">회원가입</a></li>
+                    <li>회원탈퇴</li>
                 </ul>
             </nav>
             
