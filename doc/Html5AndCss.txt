@@ -667,3 +667,18 @@ h1[lang="ko"]{ color: blue;} <!-- 1번 -->
 h1 { color : gray; } <!-- 3번 -->
 => 속성을 사용한 것은 사용하지 않은 것보다 우선순위가 높아서 1번이 3번보다 높음
 => 속성을 사용한 것이 클래스보다 속성이 높아서 1번이 2번보다 높음
+=> "Selector_priority_4.png" 파일 참조
+
+17. 스타일 링크하기
+1) html에 직접 스타일을 지정하는 것보다는 외부 CSS파일을 만들고, 링크를 걸어서 여러 HTML에서 사용하도록 하는 방식이 효과적
+=> "external_css_link_1.png" 파일 참조
+2) Root에 CSS폴더를 생성하고, style.css 파일을 생성하여 아래의 내용을 작성.
+<style>
+...
+</style>
+3) html 파일에 <head>에 생성한 CSS파일을 상대경로를 통하여 명시
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="../css/style.css" type="text/css" rel="stylesheet">    
+</head>
