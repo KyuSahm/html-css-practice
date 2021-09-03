@@ -682,3 +682,30 @@ h1 { color : gray; } <!-- 3번 -->
     <title>Document</title>
     <link href="../css/style.css" type="text/css" rel="stylesheet">    
 </head>
+
+18. 스타일 리셋, 평준화, 현대화
+1) reset.css
+=> html이 기본적으로 사용하고 있는 스타일을 전부 없애고 싶어서 어떤 사용자가 만든 스타일시트 파일을 공유함.
+2) normalize.css
+=> html이 기본적으로 사용하고 있는 스타일을 승계받아서 사용하고,
+   브라우저마다 차이가 나는 부분을 새로운 스타일로 재정의하여서 동일하게 맞춘 스타일 시트를 공유함.
+3) reset.css 또는 normalize.css 중 어느 것을 사용하느냐?
+=> 최근에는 대부분 리셋 후, 새로 정의해서 사용하는 방식을 채택
+=> 구글 사이트등 여러 곳에서 reset.css를 제공
+=> 남이 만든 것을 사용하지 않고, 우리는 reset하는 방법을 배울 것임.
+
+4) 현대화 - 구버전의 브라우저 지원
+=> HTML5를 지원하지 않는 예전 브라우저들에 대한 호환성제공
+=> HTML5를 지원하지 않는 예전 브라우저들은 HTML5 Tag들(article, section, nav, video, audio etc)를 인식하지 못함.
+=> "https://modernizr.com/"에서 "Add your detects"메뉴에서 특정 tag들을 브라우저에서 지원하는 체크하는 함수를 예제로 제공.
+   특정 Tag를 클릭해서 "view examples"를 클릭하면 됨
+예) "canvan" tag를 지원하는 지 체크하는 방법
+.no-canvas .box { color: red; }
+.canvas .box { color: green; }
+JS
+if (Modernizr.canvas) {
+  // supported
+} else {
+  // not-supported
+}
+
