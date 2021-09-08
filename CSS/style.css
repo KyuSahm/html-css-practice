@@ -1,29 +1,21 @@
-<style>
-      #main-menu>h1+ul{
-          font-size:20px;
-      }
-      
-      #main-menu>ul>li.first{
-          font-size:40px;
-          font-weight:bold;
-      }
+/* header Tag를 직접 사용하지 않음. section과 article Tag안에도 올 수 있기 때문.
+    따라서, id를 사용 */
+#header {
+    height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
+    background: yellow;
+}
 
-      #main-menu>ul>li.first+.aa{
-          font-size:30px;
-          color:red;
-      }
-      #main-menu>ul>li.first~.bb{
-          font-size:50px;
-          color:blue;
-      }
+#visual {
+    height: 171px;
+    background: green;
+}
 
-      #member-menu a[href]{
-          font-size:30px;
-          color:green;
-      }
+#body {
+    height: 300px;
+    background: red;
+}
 
-      #member-menu a[href="../index.html"]{
-          font-size:30px;
-          color:red;
-      }
-    </style>
+#footer {
+    height: 100px;
+    background: gray;
+}

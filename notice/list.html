@@ -6,9 +6,10 @@
     <link href="../css/style.css" type="text/css" rel="stylesheet">    
 </head>
 <body>
-    <h1><a href="../index.html">뉴렉처 온라인</a></h1>
-    
-    <header>
+    <!----------------------------------------- header box -------------------------------------------->
+    <header id="header">
+        <!--
+        <h1><a href="../index.html">뉴렉처 온라인</a></h1>
         <section>
             <h1 class="first">서두</h1>
 
@@ -57,123 +58,128 @@
                     <li><a href="list.html">고객센터</a></li>
                 </ul>
             </section>
-        </section>
+        </section> -->
     </header>
-
-    <aside>
-        <h1>고객센터</h1>
-        
-        <nav>
-            <h1>고객센터메뉴</h1>
-            <ul>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">자주하는 질문</a></li>
-                <li><a href="">수강문의</a></li>
-                <li><a href="">이벤트</a></li>
-            </ul>
-        </nav>
-        <nav>
-            <h1>협력업체</h1>
-            <ul>
-                <li><a href="">노트펍스</a></li>
-                <li><a href="">나무랩연구소</a></li>
-            </ul>
-        </nav>
-    </aside>
-
-    <main>
-        <section>
-            <h1>공지사항</h1>
-            <section>
-                <h1>경로</h1>
-                <ol>
-                    <li>home</li>
-                    <li>고객센터</li>
-                    <li>공지사항</li>
-                </ol>
-            </section>
+    <!----------------------------------------- visual box -------------------------------------------->
+    <div id="visual">
+    </div>
+    <!----------------------------------------- body box -------------------------------------------->
+    <div id="body">
+        <!-- <aside>
+            <h1>고객센터</h1>
             
-            <section>
-                <h1>공지사항 검색폼</h1>
-                <form>
-                    <fieldset>
-                        <legend>검색어 입력필드</legend>  
-                        <label>검색분류</label>
-                        <select>
-                            <option value="title">제목</option>
-                            <option value="writer">작성자</option>
-                        </select>
-                        <label>검색어</label>
-                        <input type="text"/>
-                        <input type="submit" value="검색">
-                    </fieldset>
-                </form>
-            </section>
-
-            <section>
-                <h1>공지사항목록</h1>
-                <table border="1">
-                    <tr>
-                        <td>번호</td>
-                        <td>제목</td>
-                        <td>작성자</td>
-                        <td>작성일</td>
-                        <td>조회수</td>
-                    </tr>
-                    <tr>
-                        <td>1028</td>
-                        <td><a href="detail.html">7월 19일 오픈하는 뉴렉처 1기 과정을 모집합니다.</a></td>
-                        <td>newlec</td>
-                        <td>2021-05-31</td>
-                        <td>3359</td>
-                    </tr>
-                    <tr>
-                        <td>1027</td>
-                        <td><a href="detail.html">7월달 온라인 강의 예정 안내</a></td>
-                        <td>newlec</td>
-                        <td>2021-05-23</td>
-                        <td>1003</td>
-                    </tr>
-                    <tr>
-                        <td>1026</td>
-                        <td><a href="detail.html">스프링 MVC 공지사항 관리자 view 페이지</a></td>
-                        <td>newlec</td>
-                        <td>2020-12-30</td>
-                        <td>4277</td>
-                    </tr>
-                    <tr>
-                        <td>1024</td>
-                        <td><a href="detail.html">스프링 MVC 소스코드</a></td>
-                        <td>newlec</td>
-                        <td>2020-12-12</td>
-                        <td>2996</td>
-                    </tr>
-                </table>
-            </section>
-
-            <section>
-                <h1>페이지정보</h1>
-                <div>1 / 2 pages</div>
-            </section>
             <nav>
-                <h1>페이저</h1>
-                <div>
-                    <div>이전</div>
-                    <ul>
-                        <li><a href="">1</li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
-                    </ul>
-                    <div>다음</div>
-                </div>
+                <h1>고객센터메뉴</h1>
+                <ul>
+                    <li><a href="">공지사항</a></li>
+                    <li><a href="">자주하는 질문</a></li>
+                    <li><a href="">수강문의</a></li>
+                    <li><a href="">이벤트</a></li>
+                </ul>
             </nav>
-        </section>
-    </main>
+            <nav>
+                <h1>협력업체</h1>
+                <ul>
+                    <li><a href="">노트펍스</a></li>
+                    <li><a href="">나무랩연구소</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-    <footer>
-        <section>
+        <main>
+            <section>
+                <h1>공지사항</h1>
+                <section>
+                    <h1>경로</h1>
+                    <ol>
+                        <li>home</li>
+                        <li>고객센터</li>
+                        <li>공지사항</li>
+                    </ol>
+                </section>
+                
+                <section>
+                    <h1>공지사항 검색폼</h1>
+                    <form>
+                        <fieldset>
+                            <legend>검색어 입력필드</legend>  
+                            <label>검색분류</label>
+                            <select>
+                                <option value="title">제목</option>
+                                <option value="writer">작성자</option>
+                            </select>
+                            <label>검색어</label>
+                            <input type="text"/>
+                            <input type="submit" value="검색">
+                        </fieldset>
+                    </form>
+                </section>
+
+                <section>
+                    <h1>공지사항목록</h1>
+                    <table border="1">
+                        <tr>
+                            <td>번호</td>
+                            <td>제목</td>
+                            <td>작성자</td>
+                            <td>작성일</td>
+                            <td>조회수</td>
+                        </tr>
+                        <tr>
+                            <td>1028</td>
+                            <td><a href="detail.html">7월 19일 오픈하는 뉴렉처 1기 과정을 모집합니다.</a></td>
+                            <td>newlec</td>
+                            <td>2021-05-31</td>
+                            <td>3359</td>
+                        </tr>
+                        <tr>
+                            <td>1027</td>
+                            <td><a href="detail.html">7월달 온라인 강의 예정 안내</a></td>
+                            <td>newlec</td>
+                            <td>2021-05-23</td>
+                            <td>1003</td>
+                        </tr>
+                        <tr>
+                            <td>1026</td>
+                            <td><a href="detail.html">스프링 MVC 공지사항 관리자 view 페이지</a></td>
+                            <td>newlec</td>
+                            <td>2020-12-30</td>
+                            <td>4277</td>
+                        </tr>
+                        <tr>
+                            <td>1024</td>
+                            <td><a href="detail.html">스프링 MVC 소스코드</a></td>
+                            <td>newlec</td>
+                            <td>2020-12-12</td>
+                            <td>2996</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h1>페이지정보</h1>
+                    <div>1 / 2 pages</div>
+                </section>
+                <nav>
+                    <h1>페이저</h1>
+                    <div>
+                        <div>이전</div>
+                        <ul>
+                            <li><a href="">1</li>
+                            <li><a href="">2</a></li>
+                            <li><a href="">3</a></li>
+                            <li><a href="">4</a></li>
+                            <li><a href="">5</a></li>
+                        </ul>
+                        <div>다음</div>
+                    </div>
+                </nav>
+            </section>
+        </main> -->
+    </div>
+    <!----------------------------------------- footer box -------------------------------------------->
+    <footer id="footer">
+        <!-- <section>
             <h1>회사정보</h1>
             <section>
                 <h1>소유권자정보</h1>
@@ -202,7 +208,7 @@
                     Copyright ⓒ newlecture.com 2012-2014 All Right Reserved. Contact admin@newlecture.com for more information
                 </div>
             </section>
-        </section>
+        </section> -->
     </footer>
 </body>
 </html>

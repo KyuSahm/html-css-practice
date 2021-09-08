@@ -222,9 +222,9 @@ Referrer-Policy: no-referrer
 6) HTML5(+Semantic Web) TAGs
 : 섹션 Tag의 종류들 -> <section>, <aside>, <nav> 
 - <header>: 웹 문서 맨 윗부분에 있으며 웹 사이트 이름, 글로벌 링크(로그인, 회원가입, 사이트맵, 언어 선택등 웹사이트 어느 곳에서든지 이용할 수 있는 링크)등으로 구성된 영역이다.
-                사이트 이름(로고), 내비게이션, 헤드라인, 검색 등으로 구성된다. 과거에는 <div id="header">와 같이 사용했었다.
-                문서나 각 section, article 의 헤더 부분에 사용가능하며, 그것들의 제목이나 간단한 소개 콘텐츠를 담을 수 있다.
-                브라우저가 헤더영역을 인식할 수 있게되면 스크린리더의 내비게이션과 검색엔진의 색인에 도움을 줄 수 있다.
+            사이트 이름(로고), 내비게이션, 헤드라인, 검색 등으로 구성된다. 과거에는 <div id="header">와 같이 사용했었다.
+            문서나 각 section, article 의 헤더 부분에 사용가능하며, 그것들의 제목이나 간단한 소개 콘텐츠를 담을 수 있다.
+            브라우저가 헤더영역을 인식할 수 있게되면 스크린리더의 내비게이션과 검색엔진의 색인에 도움을 줄 수 있다.
 예)
 <header>
     <h1>LOGO</h1>
@@ -233,7 +233,7 @@ Referrer-Policy: no-referrer
 </header>
 - <main>: HTML5 권고후보에 main요소가 추가되었다. 문서내 main요소가 나오는 것은 1번만 허용
 	 콘텐츠모델은 Flow content. 단, main요소를 article, aside, footer, header, nav요소의 하위로 사용하지 않음
-	섹션 콘텐츠가 아니기 때문에 아웃라인 생성하지 않음
+	 섹션 콘텐츠가 아니기 때문에 아웃라인 생성하지 않음
 
 - <aside>: 섹션 Tag 중의 하나. 페이지 전체 내용과는 어느정도 관련성이 있지만 주요 내용과는 직접적인 연관성은 없는 분리된 내용을 담고 있다.
 	  흔히 사이드바라고 부르는 영역으로 배너, 용어 설명, 관련 상품 등 본문 내용과 직접적인 관련성이 적거나 없는 내용으로 구성된다.
@@ -263,7 +263,8 @@ Referrer-Policy: no-referrer
 	    탭과 같은 상위 주제 아래에 하위 주제로 엮인 탭 방식의 구성일때 각각의 탭을 section 요소로 표시할 수 있다.
 	    섹션은 독립적인 영역이라 섹션 내에도 헤더(header)와 푸터(footer)를 둘 수 있다. 이것은 섹션마다 나름의 제목 체계를 가질 수 있다는 것을 의미하며, 섹션마다 H1 요소를 가질 수 있게 되었다.
 	    스크린리더 사용자는 섹션 단위로 이동할 수 있으므로 문서 내 내비게이션이 좀 더 수월해지고 검색엔진은 특정 섹션 중심으로 색인 활동을 할 수 있으므로 검색엔진의 효율성을 높일 수 있다.
-예)
+   => section tag안에 <header><footer> tag를 가질 수 있다.
+예) 
 <section>
     <article>
         <h1>제목</h1>
@@ -709,3 +710,41 @@ if (Modernizr.canvas) {
   // not-supported
 }
 
+19. 레이아웃 블록
+1) 콘텐츠 블록 스타일 VS 레이아웃 블록 스타일
+- "Contents_VS_Layout_Block_Style.png" 참조
+
+2) 레이아웃 블록 스타일을 적용 후, 콘텐츠 블록 스타일을 적용
+3) 레이아웃 배치 : 격자형은 단 방향을 중첩해서 만든다.
+- 격자형은 단방향으로 나눌 수 있기 때문에, 수평(수직)을 먼저 나눈 후, 다시 수직(수평)으로 중첩해서 계속 나누어 가면 된다.
+- "Layout_Block_Example_X.png"
+
+20. 제일 큰 방(Box) 꾸미기
+1) 가장 큰 방을 수평 또는 수직으로 나눈다.
+2) "Layout_Biggest_Box_X.png" 참조
+3) header, visual, body, footer에 대한 ID 생성 후, 높이 지정
+ => 높이를 지정하지 않으면, content들에 따라 달라짐.
+    높이를 작게 지정하면, content가 겹쳐 보일 수 있음
+ => Html 파일 영역 선택 후,  Ctrl + K + C 하면 주석처리됨.
+예) style.css 파일
+/* header Tag를 직접 사용하지 않음. section과 article Tag안에도 올 수 있기 때문.
+    따라서, id를 사용 */
+#header {
+    height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
+    background: yellow;
+}
+
+#visual {
+    height: 171px;
+    background: green;
+}
+
+#body {
+    height: 300px;
+    background: red;
+}
+
+#footer {
+    height: 100px;
+    background: gray;
+}
