@@ -1,3 +1,5 @@
+@import url("reset.css");
+
 /* header Tag를 직접 사용하지 않음. section과 article Tag안에도 올 수 있기 때문.
     따라서, id를 사용 */
 #header {

@@ -748,3 +748,24 @@ if (Modernizr.canvas) {
     height: 100px;
     background: gray;
 }
+
+21. reset 파일 생성
+1) "제일 큰 방(Box) 꾸미기"을 해보면, 상하좌우 여백이 존재
+=> HTML 기본 속성이 적용되기 때문
+2) 실제 구성요소는 아래와 같이 구성
+- content
+- padding: 실제 content와 border 사이의 간격
+- border
+- margin: 창 전체와 border사이의 간격 => 상하좌우 여백이 존재하는 이유.
+3) reset.css 파일을 추가 후, 아래 내용을 첨가
+body {
+    margin: 0px;
+}
+4) reset.css의 링크를 생성하는 두가지 방법
+- 첫번째 방법: list.html파일에 아래의 내용을 추가
+<link href="../css/reset.css" type="text/css" rel="stylesheet">
+- 두번째 방법: 기존의 style.css 파일의 내용에 import함.     
+@import url("reset.css");
+- 두번째 방법이 로딩 속도가 느리다. 그러나, 관리하는 면에서는 두번째 방법이 좋다.
+
+
