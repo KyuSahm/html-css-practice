@@ -853,3 +853,30 @@ hsl(30, 100%, 50%);
         margin-right:auto;
         background: red;
     }
+24. 세번째 방 설정하기
+1) 중앙에 정렬된 두번째방을 좌우로 나누기. "Layout_Third_Box.png" 참조.
+2) 시각적인 방을 만들 때는, <section>보다는 <div>를 이용
+3) <section> 문서의 내용을 가지고 있는 영역. style과는 관련이 없다.
+4) "<div id="body">"의 "<div class="content-box">"는 <aside>와 <main>을 그대로 사용해도 좋다.
+5) 블록(Block) 형식의 기본 배치방식
+- "Layout_Third_Box_1.png" 참조
+- 블록들을 나열하면, 위에서부터 아래로 수직적으로 배치된다.
+- 좌우로 배치하고자 할 때.
+● float를 left로 변경하여 사용 => 과거에 사용하던 꼼수 방법
+● 상위 Element에서 display를 flex로 지정 => 현재 방식
+예)"#body>.content-box"가 "#aside"와 "#main"의 상위 엘리먼트일 경우.
+    #body>.content-box {
+        display: flex;
+    }
+    
+    #aside {
+        height: inherit;
+        width: 205px;        
+        background: red;
+    }
+
+    #main {
+        height: inherit;
+        width: 755px;
+        background: yellow;
+    }
