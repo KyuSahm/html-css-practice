@@ -340,9 +340,9 @@ Referrer-Policy: no-referrer
 12. 콤비네이션 연산자(Combinators)
 1) 종류
 - Descendant selectors: A B  => A selector 자손들 중에서 B selector를 찾아라!
-- Child selector: A > B => A selector 자식들 중에서 B selector를 찾아라!
-- Adjacent sibling selector: A + B => A selector 오른쪽 수평방향으로 바로 이웃한 것(바로 아래 동생) 중에서 B selector를 찾아라!
-- General sibling selector: A ~ B => A selector 오른쪽 수평방향으로 이웃한 것들(동생들) 중에서 B selector를 찾아라!
+- Child selector: A>B => A selector 자식들 중에서 B selector를 찾아라!
+- Adjacent sibling selector: A+B => A selector 오른쪽 수평방향으로 바로 이웃한 것(바로 아래 동생) 중에서 B selector를 찾아라!
+- General sibling selector: A~B => A selector 오른쪽 수평방향으로 이웃한 것들(동생들) 중에서 B selector를 찾아라!
 예)
 <style>
     #main-menu h1{
@@ -798,3 +798,58 @@ hsl(30, 100%, 50%);
 - AppWorkspace: Background color of multiple document interface
 - Background: Face background color of 3D elements that appear 3D due to one layer of surrounding border.
               Should be used with the ButtonText foreground.
+
+23. 두번째 방 설정하기(박스 정렬과 최소 높이)
+1) 격자형은 단 방향을 중첩해서 만든다.
+2) 화면을 세로로 세부분 나누면, 중간 부분에만 컨텐츠가 위치한다.
+- "Layout_Second_Box.png" 참조
+3) 부모의 속성값을 상속하기: "inherit"
+예) 부모의 높이 값을 상속
+#header {
+    height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
+    background: #FFFF00f0;
+}
+    #header>.content-box {
+        height: inherit;
+        background: red;
+    }
+예) 부모의 높이을 100% 채움
+#header {
+    height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
+    background: #FFFF00f0;
+}
+    #header>.content-box {
+        height: 100%;
+        background: red;
+    }
+4) 블록의 너비 고정하기
+- 윈도우 창을 줄여도 고정됨.
+- width를 지정하지 않으면, 부모의 너비를 채움.
+- 너비를 줄여서 부모 element를 채우지 못하면, 기본적으로 왼쪽으로 align됨.
+예) 왼쪽 정렬
+    #header>.content-box {
+        height: inherit;
+        width: 960px;
+        background: red;
+    }
+5) 블록의 오른쪽 정렬 방법
+- "Layout_right_align.png" 참조
+- "margin-left:auto;"을 명시하면, 오른쪽 정렬됨.
+예)
+    #header>.content-box {
+        height: inherit;
+        width: 960px;
+        margin-left:auto;
+        background: red;
+    }
+6) 블록의 가운데 정렬 방법
+- "Layout_center_align.png" 참조
+- "margin-left:auto;"와 "margin-right:auto;"을 함께 명시하면, 가운데 정렬됨.
+예)
+    #header>.content-box {
+        height: inherit;
+        width: 960px;
+        margin-left:auto;
+        margin-right:auto;
+        background: red;
+    }

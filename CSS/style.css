@@ -1,11 +1,20 @@
 @import url("reset.css");
 
+/* 범용적인 style은 위로 올린다. */
+.content-box {
+    height: inherit;
+    width: 960px;
+    margin-left:auto;
+    margin-right:auto;
+    background: #ff000020;
+}
+
 /* header Tag를 직접 사용하지 않음. section과 article Tag안에도 올 수 있기 때문.
     따라서, id를 사용 */
 #header {
     height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
     background: #FFFF00f0;
-}
+}    
 
 #visual {
     height: 171px;
