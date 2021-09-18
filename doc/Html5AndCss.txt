@@ -768,4 +768,33 @@ body {
 @import url("reset.css");
 - 두번째 방법이 로딩 속도가 느리다. 그러나, 관리하는 면에서는 두번째 방법이 좋다.
 
-
+22. 색상값
+1) Color Keywords vs Hex vs Decimal
+2) "Color_Value_Define.png" 참조
+3) Color Keywords로 표현가능한 색깔은 256가지 정도이다.
+4) Hex 표현
+- 24bit로 표현
+- 각 8bit는 R, G, B를 표현
+- 대소문자 구별안함.
+예)
+#c0c0c0
+#000000 => 검정색 
+#ffffff => 흰색
+#ff0000 => 빨간색  
+5) Decimal 표현
+- rgb(255, 0, 0);
+- rgb(100%, 0%, 20%); // 퍼센트로도 표현가능
+6) 투명도 조절(Transparent)
+- 호환되지 않는 브라우저가 존재.
+- 1에 가까울수록, 불투명해짐.
+예)
+rgba(255, 0, 0, 0.2);
+#ff0000f0
+7) Hue-saturation-lightness model(HSL)
+hsl(30, 100%, 50%);
+8) System Colors - 윈도우 OS의 테마 색깔을 사용 가능
+- ActiveBorder: Active window border
+- ActiveCaption: Active window caption. Should be used with CaptionText as foreground color.
+- AppWorkspace: Background color of multiple document interface
+- Background: Face background color of 3D elements that appear 3D due to one layer of surrounding border.
+              Should be used with the ButtonText foreground.

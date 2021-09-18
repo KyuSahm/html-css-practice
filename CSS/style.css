@@ -4,20 +4,20 @@
     따라서, id를 사용 */
 #header {
     height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
-    background: yellow;
+    background: #FFFF00f0;
 }
 
 #visual {
     height: 171px;
-    background: green;
+    background: rgb(0, 255, 0);
 }
 
 #body {
     height: 300px;
-    background: red;
+    background: rgba(100%, 0%, 0%, 0.8);
 }
 
 #footer {
     height: 100px;
-    background: gray;
+    background: rgb(155, 155, 155);
 }
