@@ -880,3 +880,71 @@ hsl(30, 100%, 50%);
         width: 755px;
         background: yellow;
     }
+25. 콘텐츠 블록과 절대좌표
+1) CSS 2.0까지는 레이아웃 기법이 존재하지 않았으나, CSS 3.0부터 나오기 시작.
+2) CSS 2.0까지는 컨텐츠(목록, 표, 제목, 문장, 폼, 기타(div))가 수직으로 쌓이는 방법밖에 존재 안함.
+3) "Content_layout_01.png" 참조
+4) Flex기법을 사용하면, 수평(오른쪽->왼쪽 또는 왼쪽->오른쪽) 배치도 가능.
+   수직으로 아래에서 위로 쌓을 수 있다.
+5) Grid기법을 사용하면, 컨텐츠들을 원하는 위치에 배치 가능.
+=> 최신 기법. 지원하지 않는 브라우저가 있을 수 있음. 
+6) 콘텐츠 블록의 일부분의 위치를 정하기.
+=> "Content_layout_02.png" 참조
+- Absolute 기법
+- Relative 기법
+- fixed 기법
+- sticky 기법
+7) <li> tag의 기본 Layout
+- 높이는 컨텐츠 내용의 높이. 컨텐츠가 없으면, 0
+- 너비는 화면을 다 채우는 너비(100%)
+- 위치는 위의 tag아래에 위치
+8) position의 속성의 기본값은 "static": Tag가 정해진 위치에 존재.
+9) position의 속성을 "absolute"로 하면, 문서전체에서 정해주는 좌표의 위치에 존재.
+   지정하면, 부모 Tag와의 관계가 사라지면서, 너비가 컨텐츠 크기만큼으로 줄어듬.
+   다른 Tag들과 겹칠수도 있음. absolute가 명시된 Tag가 제일 위에 Display됨.
+예1) 
+#s1 li:nth-child(2) {
+    background: green;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+
+예2) 화면 크기에 상관없이 오른쪽 끝에 붙이고 싶은경우 => "right: 0px"을 명시
+#s1 li:nth-child(2) {
+    background: green;
+    position: absolute;
+    right: 0px;
+    top: 30px;
+}
+
+예3) 화면 크기에 상관없이 아래쪽 끝에 붙이고 싶은경우 => "bottom: 0px"을 명시
+#s1 li:nth-child(2) {
+    background: green;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+예4) 부모 Tag안에서의 절대좌표를 사용하고 싶은 경우
+=> 부모 Tag인 "ul"의 position 속성을 "relative"로 변경하면 됨.
+#s1 ul {
+    background: yellow;
+    height: 500px;
+    position: relative;
+}
+
+#s1 li:nth-child(1) {
+    background: red;
+}
+
+#s1 li:nth-child(2) {
+    background: green;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+#s1 li:nth-child(3) {
+    background: blue;
+}
