@@ -1,9 +1,15 @@
 @import url(css/reset.css);
 
+#header {
+    height: 50px;
+    background: beige;
+    position: sticky;
+    width: 100%;
+    top: 0px
+}
+
 #s1 ul {
     background: yellow;
-    height: 300px;
-    position: relative;
 }
 
 #s1 li:nth-child(1) {
@@ -12,9 +18,6 @@
 
 #s1 li:nth-child(2) {
     background: green;
-    position: fixed;
-    width: 100%;
-    bottom: 0px;    
 }
 
 #s1 li:nth-child(3) {

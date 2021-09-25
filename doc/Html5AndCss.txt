@@ -1048,3 +1048,41 @@ hsl(30, 100%, 50%);
 #s1 li:nth-child(3) {
     background: blue;
 }
+
+28. 콘텐츠 블록과 붙임위치(sticky 기법)
+1) 최근에 등장 - 모바일에서 사용하던 기법이 CSS에 추가됨
+2) 주석처리 - Ctrol + k후, c버튼
+3) 사용자가 header를 화면 위쪽에 고정하기를 원하는 경우
+- 아래와 같이 하면 header가 동생 sibling를 가리는 문제가 발생
+- 적용해 보면, "포지션: absolute"란 글자가 안 보임.(50px에 포함되는 tag들)
+예)
+- css
+#header {
+    height: 50px;
+    background: beige;
+    position: fixed;
+    width: 100%;
+    top: 0px
+}
+
+- Html
+<header id="header">
+    <h1>뉴렉처</h1>
+</header>
+<section id="s1">
+    <h1>포지션: absolute</h1>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</section>
+- 아래와 같이 header의 position을 "sticky"로 하면, 해결됨
+  주의할 사항으로, "top" 속성을 꼭 명시해줘야 동작함.
+#header {
+    height: 50px;
+    background: beige;
+    position: sticky;
+    width: 100%;
+    top: 0px
+}
