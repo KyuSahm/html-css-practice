@@ -2,23 +2,19 @@
 
 #s1 ul {
     background: yellow;
-    height: 500px;
-    width: 500px;
+    height: 300px;
     position: relative;
-    left: 50px;
-    right: 30px;
 }
 
 #s1 li:nth-child(1) {
     background: red;
-    position: relative;
-    left: 50px;
-    top: 30px;
 }
 
 #s1 li:nth-child(2) {
     background: green;
-    
+    position: fixed;
+    width: 100%;
+    bottom: 0px;    
 }
 
 #s1 li:nth-child(3) {

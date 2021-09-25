@@ -900,8 +900,9 @@ hsl(30, 100%, 50%);
 - 위치는 위의 tag아래에 위치
 8) position의 속성의 기본값은 "static": Tag가 정해진 위치에 존재.
 9) position의 속성을 "absolute"로 하면, 문서전체에서 정해주는 좌표의 위치에 존재.
-   지정하면, 부모 Tag와의 관계가 사라지면서, 너비가 컨텐츠 크기만큼으로 줄어듬.
-   다른 Tag들과 겹칠수도 있음. absolute가 명시된 Tag가 제일 위에 Display됨.
+   지정하면, 기본적으로 부모 Tag와의 관계가 사라지면서, 너비가 컨텐츠 크기만큼으로 줄어듬.
+   다른 Tag들과 겹칠수도 있음. absolute가 명시된 Tag가 다른 tag보다 위에 Display됨.
+   단, 부모 position속성을 relative로 변경하면 부모 tag내의 위치로 변경됨.   
 예1) 
 #s1 li:nth-child(2) {
     background: green;
@@ -926,8 +927,9 @@ hsl(30, 100%, 50%);
     bottom: 0px;
 }
 
-예4) 부모 Tag안에서의 절대좌표를 사용하고 싶은 경우
+예4) 부모 Tag안에서 절대좌표를 사용하고 싶은 경우
 => 부모 Tag인 "ul"의 position 속성을 "relative"로 변경하면 됨.
+=> 부모 Tag안의 위치에서 위치가 결정됨.
 #s1 ul {
     background: yellow;
     height: 500px;
@@ -951,7 +953,8 @@ hsl(30, 100%, 50%);
 
 26. 콘텐츠 블록과 상대좌표(Relative 기법)
 1) 원래 존재하는 위치에서 상대 좌표로 이동
-2) 기존에 원래 존재하는 위치는 공백으로 둠.(sibling tag들은 위치 그대로)
+2) 기존에 원래 존재하는 위치는 공백으로 남겨둠.
+=> sibling tag들도 그대로 위치함.
 예) 
 @import url(css/reset.css);
 
@@ -990,4 +993,58 @@ hsl(30, 100%, 50%);
     position: relative;
     left: 50px; -- 50px + 50px에 위치
     top: 30px;  -- 30px + 30px에 위치
+}
+
+27. 콘텐츠 블록과 고정위치(fixed 기법)
+1) 원래 존재하는 위치는 동생 sibling들이 채움
+2) 해당 tag를 고정된 위치로 이동시킴.
+3) absolute와의 차이점
+- absolute: 브라우저 창이 스크롤되면, 해당 tag가 화면에서 사라짐. (문서기준 위치)
+- fixed: 브라우저 창이 스크롤 되더라도 화면상의 정해진 위치에 표시됨. (브라우저 화면영역기준 위치)
+         화면상의 퀵메뉴처럼 항상 보이게 할 때 사용.
+예)
+@import url(css/reset.css);
+
+#s1 ul {
+    background: yellow;
+}
+
+#s1 li:nth-child(1) {
+    background: red;
+}
+
+#s1 li:nth-child(2) {
+    background: green;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;    
+}
+
+#s1 li:nth-child(3) {
+    background: blue;
+}
+4) 부모의 position을 "relative"로 하고, height를 명시해도, 해당 Tag의 위치가 변하지 않음
+=> 화면을 기준으로 하기 때문. 아래 예제에서 "#s1 li:nth-child(2)"의 위치는 변화 없음.
+예)
+@import url(css/reset.css);
+
+#s1 ul {
+    background: yellow;
+    height: 300px;
+    position: relative;
+}
+
+#s1 li:nth-child(1) {
+    background: red;
+}
+
+#s1 li:nth-child(2) {
+    background: green;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;    
+}
+
+#s1 li:nth-child(3) {
+    background: blue;
 }
