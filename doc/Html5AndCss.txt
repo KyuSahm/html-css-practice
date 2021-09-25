@@ -948,3 +948,46 @@ hsl(30, 100%, 50%);
 #s1 li:nth-child(3) {
     background: blue;
 }
+
+26. 콘텐츠 블록과 상대좌표(Relative 기법)
+1) 원래 존재하는 위치에서 상대 좌표로 이동
+2) 기존에 원래 존재하는 위치는 공백으로 둠.(sibling tag들은 위치 그대로)
+예) 
+@import url(css/reset.css);
+
+#s1 ul {
+    background: yellow;
+    height: 500px;
+    width: 500px;
+}
+
+#s1 li:nth-child(1) {
+    background: red;
+    position: relative;
+    left: 50px;
+    top: 30px;
+}
+
+-- 위치 변동 없음
+#s1 li:nth-child(2) {
+    background: green;
+    
+}
+3) 부모를 relative해서 offset을 주면, 모든 child들도 함께 이동
+@import url(css/reset.css);
+
+#s1 ul {
+    background: yellow;
+    height: 500px;
+    width: 500px;
+    position: relative;
+    left: 50px;
+    right: 30px;
+}
+
+#s1 li:nth-child(1) {
+    background: red;
+    position: relative;
+    left: 50px; -- 50px + 50px에 위치
+    top: 30px;  -- 30px + 30px에 위치
+}
