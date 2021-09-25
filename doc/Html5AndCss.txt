@@ -1086,3 +1086,51 @@ hsl(30, 100%, 50%);
     width: 100%;
     top: 0px
 }
+
+29. Flex Display 학습내용
+1) Flex Terminology
+- flex container
+- flex item
+2) Flexibility
+- flex
+- flex-grow
+- flex-shrink
+- flex-basis
+3) Flex lightness
+- flex-wrap
+- flex-Flow
+4) Orientation & Ordering
+- flex-direction
+- order
+5) Alignment
+- justify-content
+- align-items
+- align-self
+
+30. Flex 레이아웃과 용어
+1) 기존 CSS2의 레이아웃을 위한 Display 방식
+- "layout_css_2.png" 참조
+2) 기존에는 컨텐츠 블록들에 대해 수직적인 배치만을 허용
+- "layout_contents_block_old.png" 참조
+3) 최근에는 컨텐츠 블록들에 대해 수평적인 배치도 가능 : Flex
+- "layout_contents_block_new.png" 참조
+4) Flex 컨테이너와 용어
+- "flex_container_term.png" 참조
+- flex container
+- main size, cross size, main start, main end, cross start, cross end, main axis, cross axis
+- flex item 
+- main axis: 사용자가 기준으로 삼는 축(수평 또는 수직)
+- cross axis: main axis에 90도되는 축
+5) Flex 방향 설정하기
+- "flex_direction_set.png" 참조
+- row: 수평 방향으로 왼쪽에서 오른쪽으로
+- row-reverse: 수평 방향으로 오른쪽에서 왼쪽으로
+- column: 수직 방향으로 위에서 아래로
+- column-reverse: 수직 방향으로 아래에서 위로
+- flex-wrap: nowrap | wrap | wrap-reverse. "flex_direction_wrap.png" 참조
+6) Flex 정렬 옵션
+- "flex_align_option.png" 참조
+- 수평축 정렬 옵션(main-axis): "flex_main_axis_align.png" 참조
+=> justify-content: flex-start | flex-end | center | space-between | space-around
+- 수직축 정렬 옵션(cross-axis): "flex_cross_axis_align.png" 참조
+=> align-items: stretch | flex-start | center | space-between | space-around
