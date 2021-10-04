@@ -198,7 +198,7 @@ Referrer-Policy: no-referrer
   굵은 텍스트: <strong> => css로 대체 가능
   한줄바꿈: <br> <!-- 사용자가 Enter키를 친것은 한줄에서 나옴 -->
   현재 사용가능한 인라인 Tags: css로 대체가능한 꾸미는 Tag들은 사라지고 있다.
-<a>, <abbr>, <acronym>, <audio>, <br>, <bdi>, <bdo>, <big>, <br>, <button>, <canvas>, <cite>, <code>, <data>, <datalist>, <del>, <dfn>, <em>, <embed>, <i>, <iframe>, <img>, <input>, <ins>, <kbd>, <label>, <nao>, <mark>, <meter>, <noscript>, <object>, <output>, <picture>, <progress>, <q>, <ruby>, <s>, <samp>, <script>, <select>, <slot>, <small>, <span>, <strong>, <sub>, <sup>, <svg>, <template>, <textarea>, <time>, <u>, <tt>, <var>, <video>, <wbr>
+  <a>, <abbr>, <acronym>, <audio>, <br>, <bdi>, <bdo>, <big>, <br>, <button>, <canvas>, <cite>, <code>, <data>, <datalist>, <del>, <dfn>, <em>, <embed>, <i>, <iframe>, <img>, <input>, <ins>, <kbd>, <label>, <nao>, <mark>, <meter>, <noscript>, <object>, <output>, <picture>, <progress>, <q>, <ruby>, <s>, <samp>, <script>, <select>, <slot>, <small>, <span>, <strong>, <sub>, <sup>, <svg>, <template>, <textarea>, <time>, <u>, <tt>, <var>, <video>, <wbr>
   ```
 - 영역 나누기
   위의 것들에 해당되지 않는 경우처럼 애매할 때
@@ -221,7 +221,7 @@ Referrer-Policy: no-referrer
  <dl></dl>: 설명과 관련된 list
  <dt></dt>: 용어의 정의
  <dd></dd>: 용어의 설명
- ```
+```
 
 ```html 
 <ul>
@@ -304,7 +304,7 @@ Referrer-Policy: no-referrer
         <li>메뉴2</li>
     </ul>
 </nav>
-```
+ ```
 - ``<section>``
  섹션 Tag 중의 하나. 섹션을 표시한다. 내용적 흐름과 구조를 만들기 위해 내용을 나누는 용도이다. 같은 성격의 내용, 즉 관련있는 내용을 section 요소로 묶어 표시한다. 뉴스와 광고 섹션 처럼 서로 다른 성격을 지닌 것들을 section 요소로 표시하면 영역 구분이 아주 명확해진다. 탭과 같은 상위 주제 아래에 하위 주제로 엮인 탭 방식의 구성일때 각각의 탭을 section 요소로 표시할 수 있다. 섹션은 독립적인 영역이라 섹션 내에도 헤더(header)와 푸터(footer)를 둘 수 있다. 이것은 섹션마다 나름의 제목 체계를 가질 수 있다는 것을 의미하며, 섹션마다 H1 요소를 가질 수 있게 되었다. 스크린리더 사용자는 섹션 단위로 이동할 수 있으므로 문서 내 내비게이션이 좀 더 수월해지고 검색엔진은 특정 섹션 중심으로 색인 활동을 할 수 있으므로 검색엔진의 효율성을 높일 수 있다. 단, section tag안에 ``<header><footer>`` tag를 가질 수 있다.
 ```html
@@ -341,7 +341,7 @@ Referrer-Policy: no-referrer
 - 개별 적용예 => "속성:값;" 형태로 적용. 예를들면, "color:blue;". 하나의 속성이라도 ";"로 끝내야 됨.
 ```html
  <h1 style="color:blue;font-size:5px;">메인메뉴</h1> => 제목의 색깔과 폰트 사이즈 지정
-``` 
+```
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Reference: 정확한 CSS properties 설명
 
 ## 기본 선택자(Selector)
@@ -389,7 +389,7 @@ Referrer-Policy: no-referrer
 ....
 <li><a href="" id="name1">강좌선택</a></li>
 <li><a href="" id="name2">AnswerIs</a></li><!-- id가 중복되면 안됨-->
-```
+ ```
 ## 콤비네이션 연산자(Combinators)
 #### 종류
 - Descendant selectors: A B  => A selector 자손들 중에서 B selector를 찾아라!
@@ -1212,3 +1212,89 @@ hsl(30, 100%, 50%);
   ```html
   align-items: stretch | flex-start | center | space-between | space-around
   ```
+## Flexibility 
+
+#### flex 레이아웃 설정하기
+
+- inline-flex(display): flex안에 들어가는 tag들이 inline tag들인 경우
+- flex(display): flex안에 들어가는 tag들이 block tag들인 경우
+- inline-flex와 flex간의 차이가 거의 없음
+
+#### flex-grow
+
+#### flex-shrink
+
+#### flex-basis
+
+## Flex Lines 
+
+#### flex-direction
+
+- ``<ul>``  Tag에 ``display: flex;``를 명시하면, 기본적으로 자식 tag들이 수평으로 표시
+- flex가 적용되면, 너비를 다 채우던 ``<li>`` Tag가 content의 내용에 따라서 너비와 높이가 결정
+- 수직과 수평의 방향 선택은 ``flex-direction`` 속성을 이용
+  - ``flex-direction: row;`` :  수평방향으로 Tag들을 표시함
+  - ``flex-direction: row-reverse;`` :  오른쪽에서 왼쪽 수평방향으로 Tag들을 표시함
+  - ``flex-direction: column;`` :  수직방향으로 Tag들을 표시함
+  - ``flex-direction: column-reverse;`` :  아래에서 위로 수직방향으로 Tag들을 표시함
+
+#### flex-basis
+
+- 축방향(row, column)으로의 크기(너비 또는 높이)를 ``flex-basis: 100px;`` 정해줄 수 있음
+- 축방향과 관련없이 높이와 너비를 지정하고 싶으면, ``width: 100px;``와 ``height: 100px;``를 사용
+
+- html
+
+```html
+<body>
+    <section class="s1">
+        <h1>flex box</h1>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </section>
+</body>    
+</html>
+```
+
+- CSS
+
+```css
+@import url(css/reset.css);
+.s1 ul {
+    display: flex;
+    flex-direction: row; /* 자손들이 수평방향으로 display 됨. */
+    background: gray;
+}
+
+.s1 li:nth-child(1) {
+    background: red;
+    flex-basis: 100px;   /* 축 방향으로 100px을 지정 */
+}
+
+.s1 li:nth-child(2) {
+    background: green;
+}
+
+.s1 li:nth-child(3) {
+    background: blue;
+}
+
+.s1 li:nth-child(4) {
+    background: yellow;
+}
+
+.s1 li:nth-child(5) {
+    background: lightblue;
+}
+```
+
+
+
+#### flex-wrap
+
+#### flex-flow
