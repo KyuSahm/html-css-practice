@@ -1,13 +1,18 @@
 @import url(css/reset.css);
 .s1 ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background: gray;
+}
+
+.s1 li {
+    flex-basis: 100px;
+    flex-grow: 1;
 }
 
 .s1 li:nth-child(1) {
     background: red;
-    flex-basis: 100px;
+    flex-grow: 3;    
 }
 
 .s1 li:nth-child(2) {

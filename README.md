@@ -543,25 +543,28 @@ Referrer-Policy: no-referrer
 ```
 
 #### CSS Style 적용 순서
-- 콘텐츠 블록 스타일을 먼저 작업 후, 레이아웃 블록 스타일을 작업("css_style_apply_order.png" 참조)
+- 콘텐츠 블록 스타일을 먼저 작업 후, 레이아웃 블록 스타일을 작업
+- "css_style_apply_order.png" 참조
 
 ## Selectors 정리
-1) Basic Selectors
+#### Basic Selectors
 - Type Selector: 엘리먼트명
 - Class Selector: .클래스명
 - ID Selector: #ID명
 - Universal Selector: *
 - Attribute Selector: [속성=값]
 
-2) Combinators
+#### Combinators
 - Descendant Selector: A B
 - Child Selector: A > B
 - Adjacent Sibling Selector: A + B
 - General Sibling Selector: A ~ B
 
 ## Attribute Selector(속성 선택자)
-1) 관련 사이트 - https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
-2) 문법 설명
+#### 관련 사이트
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
+#### 문법 설명
+```html
 [attr]
 Represents elements with an attribute name of attr.
 [attr=value]
@@ -581,6 +584,9 @@ Represents elements with an attribute name of attr whose value contains at least
 Adding an i (or I) before the closing bracket causes the value to be compared case-insensitively (for characters within the ASCII range).
 [attr operator value s] 
 Adding an s (or S) before the closing bracket causes the value to be compared case-sensitively (for characters within the ASCII range).
+```
+#### 예시
+```css
 <style>
     /* All divs with a `lang` attribute are bold. */
     div[lang] {
@@ -613,6 +619,8 @@ Adding an s (or S) before the closing bracket causes the value to be compared ca
         color: purple;
     }
 </style>
+```
+```html
 <html>
     <div lang="en-us en-gb en-au en-nz">Hello World!</div>
     <div lang="pt">Olá Mundo!</div>
@@ -620,7 +628,9 @@ Adding an s (or S) before the closing bracket causes the value to be compared ca
     <div lang="zh-TW">世界您好！</div>
     <div data-lang="zh-TW">世界您好！</div>
 </html>
-
+```
+#### 예시
+```css
 <style>
     a {
         color: blue;
@@ -656,6 +666,8 @@ Adding an s (or S) before the closing bracket causes the value to be compared ca
         color: green;
     }
 </style>
+```
+```html
 <html>
     <ul>
         <li><a href="#internal">Internal link</a></li>
@@ -665,14 +677,19 @@ Adding an s (or S) before the closing bracket causes the value to be compared ca
         <li><a href="https://example.org">Example https org link</a></li>
     </ul>
 </html>
-
-3) 사용예
+```
+#### 사용 예시
+- "member-menu" id를 가지는 엘리먼트의 ``<a>`` Tag를 사용하는 자손엘리먼트의 href 속성(attribute)를 가진 엘리먼트들에게만 적용
+- "HOME", "로그인", "회원가입"에는 적용되나, "회원탈퇴"에는 적용안됨.
+```css
 <style>
     #member-menu a[href]{
         font-size:30px;
         color:green;
     }
 </style>
+```
+```html
 <nav id="member-menu">
     <h1>회원메뉴</h1>
     <ul>
@@ -682,14 +699,18 @@ Adding an s (or S) before the closing bracket causes the value to be compared ca
         <li>회원탈퇴</li>
     </ul>
 </nav>
-=> "member-menu" id를 가지는 엘리먼트의 <a> Tag를 사용하는 자손엘리먼트 중, href 속성(attribute)를 가진 엘리먼트들에게만 적용
-=> "HOME", "로그인", "회원가입"에는 적용되나, "회원탈퇴"에는 적용안됨.
+```
+- "member-menu" id를 가지는 엘리먼트의 <a> Tag를 사용하는 자손엘리먼트 중, href 속성(attribute)의 값이 "../index.html"인 엘리먼트들에게만 적용
+- "HOME"에만 적용
+```css
 <style>
     #member-menu a[href="../index.html"]{
         font-size:30px;
         color:red;
     }
 </style>
+```
+```html
 <nav id="member-menu">
     <h1>회원메뉴</h1>
     <ul>
@@ -699,110 +720,129 @@ Adding an s (or S) before the closing bracket causes the value to be compared ca
         <li>회원탈퇴</li>
     </ul>
 </nav>
-=> "member-menu" id를 가지는 엘리먼트의 <a> Tag를 사용하는 자손엘리먼트 중, href 속성(attribute)의 값이 "../index.html"인 엘리먼트들에게만 적용
-=> "HOME"에만 적용
+```
 
 ## Selector 예제들
-1) "doc/Selector_example_*.png" 파일들을 참조
+- "doc/Selector_example_*.png" 파일들을 참조
 
 ## Selector 우선순위
-1) 아래와 같이 Selector들을 함께 사용해서 한 Element에서 충돌난다면? 
+#### Selector 충돌
+- 여러 Selector들이 한 Element에서 충돌나면, 적용범위가 넓을수록 우선 순위가 낮다.
+- ID Selector > Class Selector > Type Selector
+- "Selector_priority_1.png" 파일 참조
+```css
 #h2 { color: green;}
 h1 { color: orange;}
 .h2 { color: red;}
-=> 적용범위가 넓을수록, 우선 순위가 낮다.
-   ID Selector > Class Selector > Type Selector
-   "Selector_priority_1.png" 파일 참조
+```
 
-2) 동일한 연산 순위의 재정의
+#### 동일한 연산 순위의 재정의
+- 차례대로 적용되기 때문에, 마지막 색깔이 적용
+- "Selector_priority_2.png" 파일 참조
+- 이런 경우가 있나? 스타일 파일을 가져다 쓰고, 마음에 안드는 부분은 재정의해서 사용하면 된다.  
+
+```css
 .h1 { color: green;}
 .h1 { color: orange;}
 .h1 { color: red;}
-=> 차례대로 적용되기 때문에, 마지막 색깔이 적용된다.
-   "Selector_priority_2.png" 파일 참조
-=> 이런 경우가 있나?
-   스타일 파일을 가져다 쓰고, 마음에 안드는 부분은 재정의해서 사용하면 된다.  
+```
 
-3) 복잡한 경우의 수
+#### 복잡한 경우의 수 (1)
+- 1번과 4번을 비교하면 1번이 적용범위가 작기 때문에, 우선 순위가 높음
+- Tag보다 combinator 연산자가 우선 순위가 높기 때문에, 1번과 2번을 비교하면 2번이 우선 순위가 높음
+- 2번과 3번을 비교하면, 2번이 적용 범위가 작기 때문에 우선 순위가 높음.
+- "Selector_priority_3.png" 파일 참조
+```css
 h1.h1 { color : green; }  <!-- 1번 -->
 section > .h1 { color : orange; } <!-- 2번 -->
 section > h1 { color : blueviolet; } <!-- 3번 -->
 .h1 { color : red; } <!-- 4번 -->
-=> 1번과 4번을 비교하면 1번이 적용범위가 작기 때문에, 우선 순위가 높음
-=> Tag보다 combinator 연산자가 우선 순위가 높기 때문에, 1번과 2번을 비교하면 2번이 우선 순위가 높음
-=> 2번과 3번을 비교하면, 2번이 적용 범위가 작기 때문에 우선 순위가 높음.
-=> "Selector_priority_3.png" 파일 참조
-
+```
+#### 복잡한 경우의 수 (2)
+- 속성을 사용한 것은 사용하지 않은 것보다 우선순위가 높아서 1번이 3번보다 높음
+- 속성을 사용한 것이 클래스보다 속성이 높아서 1번이 2번보다 높음
+- "Selector_priority_4.png" 파일 참조
+```css
 h1[lang="ko"]{ color: blue;} <!-- 1번 -->
 .h1 { color : red; } <!-- 2번 -->
 h1 { color : gray; } <!-- 3번 -->
-=> 속성을 사용한 것은 사용하지 않은 것보다 우선순위가 높아서 1번이 3번보다 높음
-=> 속성을 사용한 것이 클래스보다 속성이 높아서 1번이 2번보다 높음
-=> "Selector_priority_4.png" 파일 참조
+```
 
 ## 스타일 링크하기
-1) html에 직접 스타일을 지정하는 것보다는 외부 CSS파일을 만들고, 링크를 걸어서 여러 HTML에서 사용하도록 하는 방식이 효과적
-=> "external_css_link_1.png" 파일 참조
-2) Root에 CSS폴더를 생성하고, style.css 파일을 생성하여 아래의 내용을 작성.
+- html에 직접 스타일을 지정하는 것보다는 외부 CSS파일을 만들고, 링크를 걸어서 여러 HTML에서 사용하도록 하는 방식이 효과적
+- "external_css_link_1.png" 파일 참조
+- Root에 CSS폴더를 생성하고, style.css 파일을 생성하여 아래의 내용을 작성
+```css
 <style>
 ...
 </style>
-3) html 파일에 <head>에 생성한 CSS파일을 상대경로를 통하여 명시
+```
+- html 파일에 <head>에 생성한 CSS파일을 상대경로를 통하여 명시
+```html
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <link href="../css/style.css" type="text/css" rel="stylesheet">    
 </head>
+```
 
 ## 스타일 리셋, 평준화, 현대화
-1) reset.css
-=> html이 기본적으로 사용하고 있는 스타일을 전부 없애고 싶어서 어떤 사용자가 만든 스타일시트 파일을 공유함.
-2) normalize.css
-   => html이 기본적으로 사용하고 있는 스타일을 승계받아서 사용하고,
-   브라우저마다 차이가 나는 부분을 새로운 스타일로 재정의하여서 동일하게 맞춘 스타일 시트를 공유함.
-3) reset.css 또는 normalize.css 중 어느 것을 사용하느냐?
-=> 최근에는 대부분 리셋 후, 새로 정의해서 사용하는 방식을 채택
-=> 구글 사이트등 여러 곳에서 reset.css를 제공
-=> 남이 만든 것을 사용하지 않고, 우리는 reset하는 방법을 배울 것임.
+#### reset.css
+- html이 기본적으로 사용하고 있는 스타일을 전부 없애고 싶어서 어떤 사용자가 만든 스타일시트 파일을 공유함.
+#### normalize.css
+- html이 기본적으로 사용하고 있는 스타일을 승계받아서 사용
+- 브라우저마다 차이가 나는 부분을 새로운 스타일로 재정의하여서 동일하게 맞춘 스타일 시트를 공유함.
+#### reset.css 또는 normalize.css 중 어느 것을 사용하느냐?
+- 최근에는 대부분 리셋 후, 새로 정의해서 사용하는 방식을 채택
+- 구글 사이트등 여러 곳에서 reset.css를 제공
+- 남이 만든 것을 사용하지 않고, 우리는 reset하는 방법을 배울 것임.
 
-4) 현대화 - 구버전의 브라우저 지원
-=> HTML5를 지원하지 않는 예전 브라우저들에 대한 호환성제공
-=> HTML5를 지원하지 않는 예전 브라우저들은 HTML5 Tag들(article, section, nav, video, audio etc)를 인식하지 못함.
-=> "https://modernizr.com/"에서 "Add your detects"메뉴에서 특정 tag들을 브라우저에서 지원하는 체크하는 함수를 예제로 제공.
+#### 현대화 : 구버전의 브라우저 지원
+- HTML5를 지원하지 않는 예전 브라우저들에 대한 호환성제공
+- HTML5를 지원하지 않는 예전 브라우저들은 HTML5 Tag들(article, section, nav, video, audio etc)를 인식하지 못함.
+- "https://modernizr.com/"에서 "Add your detects"메뉴에서 특정 tag들을 브라우저에서 지원하는 체크하는 함수를 예제로 제공.
    특정 Tag를 클릭해서 "view examples"를 클릭하면 됨
-예) "canvan" tag를 지원하는 지 체크하는 방법
+- "canvan" tag를 지원하는 지 체크하는 방법
+```css
 .no-canvas .box { color: red; }
 .canvas .box { color: green; }
-JS
+```
+```javascript
 if (Modernizr.canvas) {
     // supported
 } else {
     // not-supported
-}
+} 
+```
 
 ## 레이아웃 블록
-1) 콘텐츠 블록 스타일 VS 레이아웃 블록 스타일
+#### 콘텐츠 블록 스타일 VS 레이아웃 블록 스타일
 - "Contents_VS_Layout_Block_Style.png" 참조
-
-2) 레이아웃 블록 스타일을 적용 후, 콘텐츠 블록 스타일을 적용
-3) 레이아웃 배치 : 격자형은 단 방향을 중첩해서 만든다.
-- 격자형은 단방향으로 나눌 수 있기 때문에, 수평(수직)을 먼저 나눈 후, 다시 수직(수평)으로 중첩해서 계속 나누어 가면 된다.
+- 레이아웃 블록 스타일을 적용한 후, 콘텐츠 블록 스타일을 적용해라
+#### 레이아웃 배치
+- 격자형은 단 방향을 중첩해서 생성
+- 수평(수직)을 먼저 나눈 후, 다시 수직(수평)으로 중첩해서 계속 나누어 가면 된다.
 - "Layout_Block_Example_X.png"
 
 ## 제일 큰 방(Box) 꾸미기
-1) 가장 큰 방을 수평 또는 수직으로 나눈다.
-2) "Layout_Biggest_Box_X.png" 참조
-3) header, visual, body, footer에 대한 ID 생성 후, 높이 지정
- => 높이를 지정하지 않으면, content들에 따라 달라짐.
-    높이를 작게 지정하면, content가 겹쳐 보일 수 있음
-    => Html 파일 영역 선택 후,  Ctrl + K + C 하면 주석처리됨.
-    예) style.css 파일
-    /* header Tag를 직접 사용하지 않음. section과 article Tag안에도 올 수 있기 때문.
-    따라서, id를 사용 */
-    #header {
-    height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
-    background: yellow;
-    }
+- 가장 큰 방을 수평 또는 수직으로 나눈다.
+
+- "Layout_Biggest_Box_X.png" 참조
+
+- header, visual, body, footer에 대한 ID 생성 후, 높이 지정
+
+   - 높이를 지정하지 않으면, content들에 따라 달라짐.
+
+   - 높이를 작게 지정하면, content가 겹쳐 보일 수 있음
+
+   - Html 파일 영역 선택 후,  Ctrl + K + C 하면 주석처리됨.
+```css
+/* header Tag를 직접 사용하지 않음.
+   section과 article Tag안에도 올 수 있기 때문. 따라서, id를 사용 */
+#header {
+height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
+background: yellow;
+}
 
 #visual {
     height: 171px;
@@ -818,25 +858,33 @@ if (Modernizr.canvas) {
     height: 100px;
     background: gray;
 }
+```
 
 ## reset 파일 생성
-1) "제일 큰 방(Box) 꾸미기"을 해보면, 상하좌우 여백이 존재
-=> HTML 기본 속성이 적용되기 때문
-2) 실제 구성요소는 아래와 같이 구성
-- content
-- padding: 실제 content와 border 사이의 간격
-- border
-- margin: 창 전체와 border사이의 간격 => 상하좌우 여백이 존재하는 이유.
-3) reset.css 파일을 추가 후, 아래 내용을 첨가
+- "제일 큰 방(Box) 꾸미기"을 해보면, 상하좌우 여백이 존재
+  - HTML 기본 속성이 적용되기 때문
+- 실제 구성요소는 아래와 같이 구성
+  - content
+  - padding: 실제 content와 border 사이의 간격
+  - border
+  - margin: 창 전체와 border사이의 간격 => 상하좌우 여백이 존재하는 이유.
+- reset.css 파일을 추가 후, 아래 내용을 첨가
+```css
 body {
     margin: 0px;
 }
-4) reset.css의 링크를 생성하는 두가지 방법
+```
+#### reset.css의 링크를 생성하는 두 가지 방법
 - 첫번째 방법: list.html파일에 아래의 내용을 추가
+```html
 <link href="../css/reset.css" type="text/css" rel="stylesheet">
-- 두번째 방법: 기존의 style.css 파일의 내용에 import함.     
+```
+- 두번째 방법: 기존의 style.css 파일의 내용에 import
+```css     
 @import url("reset.css");
-- 두번째 방법이 로딩 속도가 느리다. 그러나, 관리하는 면에서는 두번째 방법이 좋다.
+```
+- 두번째 방법이 로딩 속도가 느리다
+- 그러나, 관리하는 면에서는 두번째 방법이 좋다.
 
 ## 색상값
 1) Color Keywords vs Hex vs Decimal
@@ -1222,6 +1270,62 @@ hsl(30, 100%, 50%);
 
 #### flex-grow
 
+- Tag들이 채우고 남은 영역을 각각의 Tag들이 나눠가짐.
+- "flex_grow.png"과 "flex_grow_1.png"을 참조
+- html
+
+```html
+<section class="s1">
+    <h1>flex box</h1>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</section>
+```
+
+- CSS
+
+```css
+@import url(css/reset.css);
+.s1 ul {
+    display: flex;
+    flex-direction: row;
+    background: gray;
+}
+
+.s1 li {
+    flex-basis: 100px; /* s1 class아래에 위치한 li 자손들이 축방향으로 100px을 차지함 */ 
+    flex-grow: 1; /* 100px을 차지하고 남은 여백에 대해서 각각 1:1:1...으로 나눠서 가짐 */		
+}
+
+.s1 li:nth-child(1) {
+    background: red;
+    flex-grow: 3; /* 다른 li tag들의 여백보다 3배의 여백 영역을 가짐. 여기서는 7등분해서 3을 가져감 */
+}
+
+.s1 li:nth-child(2) {
+    background: green;
+}
+
+.s1 li:nth-child(3) {
+    background: blue;
+}
+
+.s1 li:nth-child(4) {
+    background: yellow;
+}
+
+.s1 li:nth-child(5) {
+    background: lightblue;
+}
+```
+
+
+
 #### flex-shrink
 
 #### flex-basis
@@ -1230,7 +1334,7 @@ hsl(30, 100%, 50%);
 
 #### flex-direction
 
-- ``<ul>``  Tag에 ``display: flex;``를 명시하면, 기본적으로 자식 tag들이 수평으로 표시
+- 부모 Tag에 ``display: flex;``를 명시하면, 기본적으로 자식 tag들이 수평으로 표시
 - flex가 적용되면, 너비를 다 채우던 ``<li>`` Tag가 content의 내용에 따라서 너비와 높이가 결정
 - 수직과 수평의 방향 선택은 ``flex-direction`` 속성을 이용
   - ``flex-direction: row;`` :  수평방향으로 Tag들을 표시함
