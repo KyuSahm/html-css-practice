@@ -1293,16 +1293,14 @@ top: 100px;
   ```html
   align-items: stretch | flex-start | center | space-between | space-around
   ```
+
 ## Flexibility 
-
 #### flex 레이아웃 설정하기
-
 - inline-flex(display): flex안에 들어가는 tag들이 inline tag들인 경우
 - flex(display): flex안에 들어가는 tag들이 block tag들인 경우
 - inline-flex와 flex간의 차이가 거의 없음
 
 #### flex-grow
-
 - Tag들이 채우고 남은 영역을 각각의 Tag들이 나눠가짐.
 - 사용자가 지정하지 않으면, default로 0을 가짐
 - "flex_grow.png"과 "flex_grow_1.png"을 참조
@@ -1358,10 +1356,7 @@ top: 100px;
 }
 ```
 
-
-
 #### flex-shrink
-
 - Tag가 사용자가 지정한 ``flex-basis``의 크기보다 줄어들수 있는지를 결정
 - 사용자가 지정하지 않으면, default로 1을 가짐
 - 따라서, 브라우저 창의 크기가 줄어들면,  Tag들이 정해진 크기인 ``flex-basis:100px``에서 1씩 줄어듬
@@ -1393,26 +1388,11 @@ top: 100px;
     background: #ff0000;
 }
 ```
-
-## Flex Lines 
-
-#### flex-direction
-
-- 부모 Tag에 ``display: flex;``를 명시하면, 기본적으로 자식 tag들이 수평으로 표시
-- flex가 적용되면, 너비를 다 채우던 ``<li>`` Tag가 content의 내용에 따라서 너비와 높이가 결정
-- 수직과 수평의 방향 선택은 ``flex-direction`` 속성을 이용
-  - ``flex-direction: row;`` :  수평방향으로 Tag들을 표시함
-  - ``flex-direction: row-reverse;`` :  오른쪽에서 왼쪽 수평방향으로 Tag들을 표시함
-  - ``flex-direction: column;`` :  수직방향으로 Tag들을 표시함
-  - ``flex-direction: column-reverse;`` :  아래에서 위로 수직방향으로 Tag들을 표시함
-
 #### flex-basis
-
 - 축방향(row, column)으로의 크기(너비 또는 높이)를 ``flex-basis: 100px;`` 정해줄 수 있음
 - 축방향과 관련없이 높이와 너비를 지정하고 싶으면, ``width: 100px;``와 ``height: 100px;``를 사용
-
+- default 값은 ``flex-basis: auto;``
 - html
-
 ```html
 <body>
     <section class="s1">
@@ -1430,7 +1410,6 @@ top: 100px;
 ```
 
 - CSS
-
 ```css
 @import url(css/reset.css);
 .s1 ul {
@@ -1460,9 +1439,49 @@ top: 100px;
     background: lightblue;
 }
 ```
+#### flex-grow/flex-shrink/flex-basis의 단축 속성과 값
+- 아래와 같이 표현들을 축약할 수 있다.
+- "https://developer.mozilla.org/en-US/docs/Web/CSS/flex"을 참조
+```css
+/* 원래 표현 */
+flex-grow: 0;
+flex-shrink: 0;
+flex-basis: 100px;
+/* 축약 표현 */
+flex : 0 0 100px;
 
+/* 원래 표현 */
+flex: 0 0 auto;
+/* 축약 표현 */
+flex: none;
 
+/* 원래 표현 */
+flex: 1 1 auto;
+/* 축약 표현 */
+flex: auto;
+
+/* 원래 표현 */
+flex: 0 1 auto;
+/* 축약 표현 */
+flex: initial;
+
+/* 원래 표현 */
+flex: 1 1 100px;
+/* 축약 표현 */
+flex: 100px;
+```
+
+## Flex Lines
+#### flex-direction
+- 부모 Tag에 ``display: flex;``를 명시하면, 기본적으로 자식 tag들이 수평으로 표시
+- flex가 적용되면, 너비를 다 채우던 ``<li>`` Tag가 content의 내용에 따라서 너비와 높이가 결정
+- 수직과 수평의 방향 선택은 ``flex-direction`` 속성을 이용
+  - ``flex-direction: row;`` :  수평방향으로 Tag들을 표시함
+  - ``flex-direction: row-reverse;`` :  오른쪽에서 왼쪽 수평방향으로 Tag들을 표시함
+  - ``flex-direction: column;`` :  수직방향으로 Tag들을 표시함
+  - ``flex-direction: column-reverse;`` :  아래에서 위로 수직방향으로 Tag들을 표시함
 
 #### flex-wrap
 
 #### flex-flow
+
