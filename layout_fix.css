@@ -6,8 +6,9 @@
 }
 
 .s1 li {
-    flex-basis: 100px;
+    flex-basis: 300px;
     flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .s1 li:nth-child(1) {
@@ -17,6 +18,7 @@
 
 .s1 li:nth-child(2) {
     background: green;
+    flex-shrink: 0;
 }
 
 .s1 li:nth-child(3) {

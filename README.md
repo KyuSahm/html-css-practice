@@ -1271,6 +1271,7 @@ hsl(30, 100%, 50%);
 #### flex-grow
 
 - Tag들이 채우고 남은 영역을 각각의 Tag들이 나눠가짐.
+- 사용자가 지정하지 않으면, default로 0을 가짐
 - "flex_grow.png"과 "flex_grow_1.png"을 참조
 - html
 
@@ -1328,7 +1329,37 @@ hsl(30, 100%, 50%);
 
 #### flex-shrink
 
-#### flex-basis
+- Tag가 사용자가 지정한 ``flex-basis``의 크기보다 줄어들수 있는지를 결정
+- 사용자가 지정하지 않으면, default로 1을 가짐
+- 따라서, 브라우저 창의 크기가 줄어들면,  Tag들이 정해진 크기인 ``flex-basis:100px``에서 1씩 줄어듬
+  - "flex_shrink_default.png" 참조
+- 사용자가 아래의 코드와 같이, ``flex-shrink: 0;``을 할당하면 Tag의 크기는 줄어들지 않고, 브라우저 창만 줄어듬
+- 브라우저 창 영역을 벗어나는 Tag들이 발생
+  - "flex_shrink_zero.png" 참조
+
+```css
+.item {
+    flex-shrink: 0;
+    flex-basis: 100px;
+    background: #ff0000;
+}
+```
+
+- 아래의 코드처럼, 특정 child만 ``flex-shrink`` 옵션을 사용해서 줄어들고, 나머지는 줄지 않게 할 수 있음.
+  - "flex_shrink_1.png" 참조
+
+```css
+.item {
+    flex-shrink: 0;
+    flex-basis: 100px;
+    background: #ff0000;
+}
+
+.item:nth-child(2) {
+    flex-shrink: 1;
+    background: #ff0000;
+}
+```
 
 ## Flex Lines 
 
