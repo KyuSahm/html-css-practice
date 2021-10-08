@@ -887,167 +887,194 @@ body {
 - 그러나, 관리하는 면에서는 두번째 방법이 좋다.
 
 ## 색상값
-1) Color Keywords vs Hex vs Decimal
-2) "Color_Value_Define.png" 참조
-3) Color Keywords로 표현가능한 색깔은 256가지 정도이다.
-4) Hex 표현
-- 24bit로 표현
-- 각 8bit는 R, G, B를 표현
-- 대소문자 구별안함.
-예)
+- Color Keywords vs Hex vs Decimal
+
+- "Color_Value_Define.png" 참조
+
+- Color Keywords로 표현가능한 색깔은 256가지 정도이다.
+
+- Hex 표현
+  - 24bit로 표현
+  - 각 8bit는 R, G, B를 표현
+  - 대소문자 구별안함.
+
+```css
 #c0c0c0
 #000000 => 검정색 
 #ffffff => 흰색
-#ff0000 => 빨간색  
-5) Decimal 표현
-- rgb(255, 0, 0);
-- rgb(100%, 0%, 20%); // 퍼센트로도 표현가능
-6) 투명도 조절(Transparent)
-- 호환되지 않는 브라우저가 존재.
-- 1에 가까울수록, 불투명해짐.
-예)
+#ff0000 => 빨간색
+```
+
+- Decimal 표현
+  - rgb(255, 0, 0);
+  - rgb(100%, 0%, 20%); // 퍼센트로도 표현가능
+- 투명도 조절(Transparent)
+  - 호환되지 않는 브라우저가 존재.
+  - 1에 가까울수록, 불투명해짐.
+
+```css
 rgba(255, 0, 0, 0.2);
 #ff0000f0
-7) Hue-saturation-lightness model(HSL)
+```
+- Hue-saturation-lightness model(HSL)
+
+```css
 hsl(30, 100%, 50%);
-8) System Colors - 윈도우 OS의 테마 색깔을 사용 가능
-- ActiveBorder: Active window border
-- ActiveCaption: Active window caption. Should be used with CaptionText as foreground color.
-- AppWorkspace: Background color of multiple document interface
-- Background: Face background color of 3D elements that appear 3D due to one layer of surrounding border.
-              Should be used with the ButtonText foreground.
+```
+
+- System Colors - 윈도우 OS의 테마 색깔을 사용 가능
+     - ActiveBorder: Active window border
+     - ActiveCaption: Active window caption. Should be used with CaptionText as foreground color.
+     - AppWorkspace: Background color of multiple document interface
+     - Background: Face background color of 3D elements that appear 3D due to one layer of surrounding border.
+                                       Should be used with the ButtonText foreground.
+
+
 
 ## 두번째 방 설정하기(박스 정렬과 최소 높이)
-1) 격자형은 단 방향을 중첩해서 만든다.
-2) 화면을 세로로 세부분 나누면, 중간 부분에만 컨텐츠가 위치한다.
+- 격자형은 단 방향을 중첩해서 만든다.
+- 화면을 세로로 세부분 나누면, 중간 부분에만 컨텐츠가 위치한다.
 - "Layout_Second_Box.png" 참조
-3) 부모의 속성값을 상속하기: "inherit"
-   예) 부모의 높이 값을 상속
-   #header {
-    height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
-    background: #FFFF00f0;
-   }
-    #header>.content-box {
-        height: inherit;
-        background: red;
-    }
-   예) 부모의 높이을 100% 채움
-   #header {
-    height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
-    background: #FFFF00f0;
-   }
-    #header>.content-box {
-        height: 100%;
-        background: red;
-    }
-4) 블록의 너비 고정하기
+- 부모의 속성값을 상속하기: "inherit"
+- 예) 부모의 높이 값을 상속
+```css    
+#header {
+height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
+background: #FFFF00f0;
+}
+#header>.content-box {
+    height: inherit;
+    background: red;
+}
+```
+- 예) 부모의 높이을 100% 채움
+```css
+#header {
+height: 70px;  /* 높이 지정, 지정하지 않으면, content들에 따라 달라짐 */
+background: #FFFF00f0;
+}
+#header>.content-box {
+    height: 100%;
+    background: red;
+}
+```
+#### 블록의 너비 고정하기
 - 윈도우 창을 줄여도 고정됨.
 - width를 지정하지 않으면, 부모의 너비를 채움.
 - 너비를 줄여서 부모 element를 채우지 못하면, 기본적으로 왼쪽으로 align됨.
-  예) 왼쪽 정렬
-    #header>.content-box {
-        height: inherit;
-        width: 960px;
-        background: red;
-    }
-5) 블록의 오른쪽 정렬 방법
+- 예) 왼쪽 정렬
+```css
+#header>.content-box {
+    height: inherit;
+    width: 960px;
+    background: red;
+}
+```
+#### 블록의 오른쪽 정렬 방법
 - "Layout_right_align.png" 참조
 - "margin-left:auto;"을 명시하면, 오른쪽 정렬됨.
-  예)
-    #header>.content-box {
-        height: inherit;
-        width: 960px;
-        margin-left:auto;
-        background: red;
-    }
-6) 블록의 가운데 정렬 방법
+```css
+#header>.content-box {
+    height: inherit;
+    width: 960px;
+    margin-left:auto;
+    background: red;
+}
+```
+#### 블록의 가운데 정렬 방법
 - "Layout_center_align.png" 참조
 - "margin-left:auto;"와 "margin-right:auto;"을 함께 명시하면, 가운데 정렬됨.
-  예)
-    #header>.content-box {
-        height: inherit;
-        width: 960px;
-        margin-left:auto;
-        margin-right:auto;
-        background: red;
-    }
+```css
+#header>.content-box {
+    height: inherit;
+    width: 960px;
+    margin-left:auto;
+    margin-right:auto;
+    background: red;
+}
+```
+
 ## 세번째 방 설정하기
-1) 중앙에 정렬된 두번째방을 좌우로 나누기. "Layout_Third_Box.png" 참조.
-2) 시각적인 방을 만들 때는, <section>보다는 <div>를 이용
-3) <section> 문서의 내용을 가지고 있는 영역. style과는 관련이 없다.
-4) "<div id="body">"의 "<div class="content-box">"는 <aside>와 <main>을 그대로 사용해도 좋다.
-5) 블록(Block) 형식의 기본 배치방식
+- 중앙에 정렬된 두번째방을 좌우로 나누기
+- "Layout_Third_Box.png" 참조
+- 시각적인 방을 만들 때는, <section>보다는 <div>를 이용
+- ``<section>``은 문서의 내용을 가지고 있고 style와는 관련이 없는 영역
+- ``<div id="body">``의 ``<div class="content-box">``는 ``<aside>``와 ``<main>``을 그대로 사용해도 좋다.
+#### 블록(Block) 형식의 기본 배치방식
 - "Layout_Third_Box_1.png" 참조
 - 블록들을 나열하면, 위에서부터 아래로 수직적으로 배치된다.
 - 좌우로 배치하고자 할 때.
-  ● float를 left로 변경하여 사용 => 과거에 사용하던 꼼수 방법
-  ● 상위 Element에서 display를 flex로 지정 => 현재 방식
-  예)"#body>.content-box"가 "#aside"와 "#main"의 상위 엘리먼트일 경우.
-    #body>.content-box {
-        display: flex;
-    }
-  
-    #aside {
-        height: inherit;
-        width: 205px;        
-        background: red;
-    }
+  - float를 left로 변경하여 사용 => 과거에 사용하던 꼼수 방법
+  - 상위 Element에서 display를 flex로 지정 => 현재 방식
+  - ``#body>.content-box``가 ``#aside``와 ``#main``의 상위 엘리먼트일 경우.
+```css  
+#body>.content-box {
+    display: flex;
+}
 
-    #main {
-        height: inherit;
-        width: 755px;
-        background: yellow;
-    }
+#aside {
+    height: inherit;
+    width: 205px;        
+    background: red;
+}
+
+#main {
+    height: inherit;
+    width: 755px;
+    background: yellow;
+}
+```
+
 ## 콘텐츠 블록과 절대좌표
-1) CSS 2.0까지는 레이아웃 기법이 존재하지 않았으나, CSS 3.0부터 나오기 시작.
-2) CSS 2.0까지는 컨텐츠(목록, 표, 제목, 문장, 폼, 기타(div))가 수직으로 쌓이는 방법밖에 존재 안함.
-3) "Content_layout_01.png" 참조
-4) Flex기법을 사용하면, 수평(오른쪽->왼쪽 또는 왼쪽->오른쪽) 배치도 가능.
-   수직으로 아래에서 위로 쌓을 수 있다.
-5) Grid기법을 사용하면, 컨텐츠들을 원하는 위치에 배치 가능.
-=> 최신 기법. 지원하지 않는 브라우저가 있을 수 있음. 
-6) 콘텐츠 블록의 일부분의 위치를 정하기.
-=> "Content_layout_02.png" 참조
-- Absolute 기법
-- Relative 기법
-- fixed 기법
-- sticky 기법
-7) <li> tag의 기본 Layout
-- 높이는 컨텐츠 내용의 높이. 컨텐츠가 없으면, 0
-- 너비는 화면을 다 채우는 너비(100%)
-- 위치는 위의 tag아래에 위치
-8) position의 속성의 기본값은 "static": Tag가 정해진 위치에 존재.
-9) position의 속성을 "absolute"로 하면, 문서전체에서 정해주는 좌표의 위치에 존재.
-   지정하면, 기본적으로 부모 Tag와의 관계가 사라지면서, 너비가 컨텐츠 크기만큼으로 줄어듬.
-   다른 Tag들과 겹칠수도 있음. absolute가 명시된 Tag가 다른 tag보다 위에 Display됨.
-   단, 부모 position속성을 relative로 변경하면 부모 tag내의 위치로 변경됨.   
-   예1) 
-   #s1 li:nth-child(2) {
-    background: green;
-    position: absolute;
-    left: 100px;
-    top: 100px;
-   }
-
-예2) 화면 크기에 상관없이 오른쪽 끝에 붙이고 싶은경우 => "right: 0px"을 명시
+- CSS 2.0까지는 레이아웃 기법이 존재하지 않았으나, CSS 3.0부터 나오기 시작.
+- CSS 2.0까지는 컨텐츠(목록, 표, 제목, 문장, 폼, 기타(div))가 수직으로 쌓이는 방법밖에 존재 안함.
+- "Content_layout_01.png" 참조
+- Flex기법을 사용하면, 수평(오른쪽->왼쪽 또는 왼쪽->오른쪽) 배치도 가능.
+- Flex기법을 사용하면, 수직으로 아래에서 위로 쌓을 수 있다.
+- Grid기법을 사용하면, 컨텐츠들을 원하는 위치에 배치 가능. 최신 기법으로, 지원하지 않는 브라우저가 존재 
+- 콘텐츠 블록의 일부분의 위치를 정하기. "Content_layout_02.png" 참조
+  - Absolute 기법
+  - Relative 기법
+  - fixed 기법
+  - sticky 기법
+- ``<li>`` tag의 기본 Layout
+  - 높이는 컨텐츠 내용의 높이. 컨텐츠가 없으면, 0
+  - 너비는 화면을 다 채우는 너비(100%)
+  - 위치는 위의 tag아래에 위치
+- position의 속성의 기본값은 "static". Tag가 정해진 위치에 존재.
+- position의 속성을 "absolute"로 하면, 문서전체에서 정해주는 좌표의 위치에 존재. 기본적으로 부모 Tag와의 관계가 사라지면서, 너비가 컨텐츠 크기만큼으로 줄어듬. 다른 Tag들과 겹칠수도 있음. absolute가 명시된 Tag가 다른 tag보다 위에 Display됨. 단, 부모 position속성을 relative로 변경하면 부모 tag내의 위치로 변경됨.   
+```css 
+#s1 li:nth-child(2) {
+background: green;
+position: absolute;
+left: 100px;
+top: 100px;
+}
+```
+- 화면 크기에 상관없이 오른쪽 끝에 붙이고 싶은경우
+  - "right: 0px"을 명시
+```css
 #s1 li:nth-child(2) {
     background: green;
     position: absolute;
     right: 0px;
     top: 30px;
 }
-
-예3) 화면 크기에 상관없이 아래쪽 끝에 붙이고 싶은경우 => "bottom: 0px"을 명시
+```
+- 화면 크기에 상관없이 아래쪽 끝에 붙이고 싶은경우
+  - "bottom: 0px"을 명시
+```css
 #s1 li:nth-child(2) {
     background: green;
     position: absolute;
     right: 0px;
     bottom: 0px;
 }
-
-예4) 부모 Tag안에서 절대좌표를 사용하고 싶은 경우
-=> 부모 Tag인 "ul"의 position 속성을 "relative"로 변경하면 됨.
-=> 부모 Tag안의 위치에서 위치가 결정됨.
+```
+- 부모 Tag안에서 절대좌표를 사용하고 싶은 경우
+  - 부모 Tag인 "ul"의 position 속성을 "relative"로 변경하면 됨.
+  - 부모 Tag안의 위치에서 위치가 결정됨.
+```css
 #s1 ul {
     background: yellow;
     height: 500px;
@@ -1068,12 +1095,12 @@ hsl(30, 100%, 50%);
 #s1 li:nth-child(3) {
     background: blue;
 }
-
+```
 ## 콘텐츠 블록과 상대좌표(Relative 기법)
-1) 원래 존재하는 위치에서 상대 좌표로 이동
-2) 기존에 원래 존재하는 위치는 공백으로 남겨둠.
-=> sibling tag들도 그대로 위치함.
-예) 
+- 원래 존재하는 위치에서 상대 좌표로 이동
+- 기존에 원래 존재하는 위치는 공백으로 남겨둠.
+- sibling tag들도 그대로 위치함.
+```css 
 @import url(css/reset.css);
 
 #s1 ul {
@@ -1094,7 +1121,9 @@ hsl(30, 100%, 50%);
     background: green;
     
 }
-3) 부모를 relative해서 offset을 주면, 모든 child들도 함께 이동
+```
+- 부모를 relative해서 offset을 주면, 모든 child들도 함께 이동
+```css
 @import url(css/reset.css);
 
 #s1 ul {
@@ -1112,16 +1141,17 @@ hsl(30, 100%, 50%);
     left: 50px; -- 50px + 50px에 위치
     top: 30px;  -- 30px + 30px에 위치
 }
+```
 
 ## 콘텐츠 블록과 고정위치(fixed 기법)
-1) 원래 존재하는 위치는 동생 sibling들이 채움
-2) 해당 tag를 고정된 위치로 이동시킴.
-3) absolute와의 차이점
-- absolute: 브라우저 창이 스크롤되면, 해당 tag가 화면에서 사라짐. (문서기준 위치)
-- fixed: 브라우저 창이 스크롤 되더라도 화면상의 정해진 위치에 표시됨. (브라우저 화면영역기준 위치)
-         화면상의 퀵메뉴처럼 항상 보이게 할 때 사용.
-     예)
-     @import url(css/reset.css);
+- 원래 존재하는 위치는 동생 sibling들이 채움
+- 해당 tag를 고정된 위치로 이동시킴.
+- fixed vs absolute
+  - absolute의 경우, 브라우저 창이 스크롤되면, 해당 tag가 화면에서 사라짐.(문서기준 위치)
+  - fixed의 경우, 브라우저 창이 스크롤 되더라도 화면상의 정해진 위치에 표시.(브라우저 화면영역기준 위치)
+    - 화면상의 퀵메뉴처럼 항상 보이게 할 때 사용.
+```css
+@import url(css/reset.css);
 
 #s1 ul {
     background: yellow;
@@ -1141,9 +1171,11 @@ hsl(30, 100%, 50%);
 #s1 li:nth-child(3) {
     background: blue;
 }
-4) 부모의 position을 "relative"로 하고, height를 명시해도, 해당 Tag의 위치가 변하지 않음
-=> 화면을 기준으로 하기 때문. 아래 예제에서 "#s1 li:nth-child(2)"의 위치는 변화 없음.
-예)
+```
+- 부모의 position을 "relative"로 하고, height를 명시해도, 해당 Tag의 위치가 변하지 않음
+  - 화면을 기준으로 하기 때문
+  - 아래 예제에서 "#s1 li:nth-child(2)"의 위치는 변화 없음.
+```
 @import url(css/reset.css);
 
 #s1 ul {
@@ -1166,6 +1198,7 @@ hsl(30, 100%, 50%);
 #s1 li:nth-child(3) {
     background: blue;
 }
+```
 
 ## 콘텐츠 블록과 붙임위치(sticky 기법)
 - 최근에 등장한 기법. 모바일에서 사용하던 기법이 CSS에 추가됨
