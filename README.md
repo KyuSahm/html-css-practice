@@ -1559,7 +1559,7 @@ flex: 100px;
 }
 ```
 
-#### Flex Ordering
+## Flex Ordering
 - 기본적으로 item들의 순서를 Tag를 나열한 순서대로 동작
   - "flex_ordering_default.png" 참조
 - 사용자가 Flex을 이용해서 CSS의 수정만으로 Tag들의 순서를 바꿈
@@ -1603,4 +1603,59 @@ flex: 100px;
     background: lightblue;
     order: 5;        
 }
-```  
+```
+
+## Flex Alignment
+- ``justify-content``는 메인 축 방향으로 정렬할 때 사용
+- ``align-items``는 수직 축 방향으로 정렬할 때 사용
+- "flex_alignment_1.png" 참조
+#### justify-content
+- 옵션들("flex_justify_content.png", "flex_justify_content_1.png" 참조)
+  - flex-start
+  - flex-end
+  - center
+  - space-between
+  - space-around
+  - space-evenly
+- 상위 Container Tag에 명시
+```css
+.s1 ul {
+    display: flex;
+    background: gray;    
+    justify-content: center;
+}
+```
+```css
+.s1 ul {
+    display: flex;
+    background: gray;    
+    justify-content: space-between;
+}
+```
+```css
+.s1 ul {
+    display: flex;
+    background: gray;    
+    justify-content: space-around;
+}
+```
+```css
+.s1 ul {
+    display: flex;
+    background: gray;    
+    justify-content: space-evenly;
+}
+```
+- Main Axis를 column방향으로 잡을 경우, height값이 충분히 켜야 함.
+```css
+.s1 ul {
+    display: flex;
+    flex-direction: column;
+    background: gray;    
+    justify-content: space-evenly;
+    height: 500px;
+}
+
+```
+#### align-items
+#### align-self
