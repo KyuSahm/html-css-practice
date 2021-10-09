@@ -450,7 +450,7 @@ Referrer-Policy: no-referrer
     </ul>
 </nav>
 ```
-- "main-menu" id를 가지는 엘리먼트의 <li> 자손 엘리먼트들 중, "first"란 이름의 class를 가진 엘리먼트에만 적용
+- "main-menu" id를 가지는 엘리먼트의 ``<li>`` 자손 엘리먼트들 중, "first"란 이름의 class를 가진 엘리먼트에만 적용
 ```html
 <style>
     #main-menu li.first{
@@ -467,7 +467,7 @@ Referrer-Policy: no-referrer
     </ul>
 </nav>
 ```
-- "main-menu" id를 가지는 엘리먼트의 <ul> 자식엘리먼트의 <li> 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트에만 적용.
+- "main-menu" id를 가지는 엘리먼트의 ``<ul>`` 자식엘리먼트의 ``<li>`` 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트에만 적용.
 - 해당 엘리먼트의 하위엘리먼트들도 자동으로 동일한 스타일이 적용됨. 따라서, "학습가이드", "서브메뉴 1", "서브메뉴 2"에도 적용.
 ```html 
 <style>
@@ -492,7 +492,7 @@ Referrer-Policy: no-referrer
     </ul>
 </nav>
 ```
-- "main-menu" id를 가지는 엘리먼트의 <ul> 자식엘리먼트의 <li> 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트에 바로 동생인 "aa"란 이름의 class를 가진 엘리먼트에만 적용. 
+- "main-menu" id를 가지는 엘리먼트의 ``<ul>`` 자식엘리먼트의 ``<li>`` 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트에 바로 동생인 "aa"란 이름의 class를 가진 엘리먼트에만 적용. 
 - 결국, "강좌선택"에는 적용되고, "AnswerIs"에는 적용 안됨.
 ```html
 <style>
@@ -517,7 +517,7 @@ Referrer-Policy: no-referrer
     </ul>
 </nav>
 ```
-- "main-menu" id를 가지는 엘리먼트의 <ul> 자식엘리먼트의 <li> 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트들에 동생들 중 "bb"란 이름의 class를 가진 엘리먼트에 적용. 
+- "main-menu" id를 가지는 엘리먼트의 ``<ul>`` 자식엘리먼트의 ``<li>`` 자식엘리먼트 중에 "first"란 이름의 class를 가진 엘리먼트들에 동생들 중 "bb"란 이름의 class를 가진 엘리먼트에 적용. 
 - 결국, "aaaa"에 적용
 ```html
 <style>
