@@ -1610,6 +1610,7 @@ flex: 100px;
 - ``align-items``는 수직 축 방향으로 정렬할 때 사용
 - "flex_alignment_1.png" 참조
 #### justify-content
+- Main Axis 방향에 대한 정렬 옵션 설정
 - 옵션들("flex_justify_content.png", "flex_justify_content_1.png" 참조)
   - flex-start
   - flex-end
@@ -1658,4 +1659,164 @@ flex: 100px;
 
 ```
 #### align-items
+- Main axis과 수직 방향의 축에 대한 정렬 옵션 설정
+- 옵션들("flex_align_items_1.png" 참조)
+  - flex-start
+  - flex-end
+  - center
+  - baseline
+  - stretch
+- 상위 Container Tag에 명시
+- 기본값은 ``align-items: stretch;``
+```css
+.s1 ul {
+    display: flex;
+    background: gray;    
+    height: 300px;
+    align-items: center;
+}
+```
+- "baseline"옵션은 Tag내에 존재하는 글자의 아래 부분을 기준으로 정렬
+```css
+.s1 ul {
+    display: flex;
+    background: gray;    
+    height: 300px;
+    align-items: baseline;
+}
+
+.s1 li {
+    flex-basis: 200px;    
+}
+
+.s1 li:nth-child(1) {
+    background: red;
+    align-self: flex-start;    
+}
+
+.s1 li:nth-child(2) {
+    background: green;
+    align-self: flex-end;    
+}
+
+.s1 li:nth-child(3) {
+    background: blue;
+    height: 100px;
+    margin-top: 10px;
+    font-size: 100px;
+}
+
+.s1 li:nth-child(4) {
+    background: yellow;
+}
+
+.s1 li:nth-child(5) {
+    background: lightblue;
+}
+```
+#### align-content
+- flex에 존재하는 하위 Tag들을 통째로 정렬
+- 옵션들("flex_align_content.png" 참조)
+  - flex-start
+  - flex-end
+  - center
+  - space-between
+  - space-around
+  - space-evenly
+  - stretch
+- Flex line의 의미?
+  - 사용자가 ``flex-wrap``옵션을 주고, 화면의 너비를 줄이면 여러 Flex line이 생김
+- ``align-items``를 명시하고, 화면의 너비를 줄이면 Child Tag들이 라인마다 정렬이 됨
+```css
+.s1 ul {
+    display: flex;
+    height: 300px;
+    background: gray;    
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.s1 li {
+    flex-basis: 200px;    
+    flex-shrink: 0;
+}
+```
+- ``align-content``를 명시하고, 화면의 너비를 줄이면 모든 Child Tag들을 한 군데 묶은 후, 정렬이 됨
+- center 정렬
+```css
+.s1 ul {
+    display: flex;
+    height: 300px;
+    background: gray;    
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.s1 li {
+    flex-basis: 200px;    
+    flex-shrink: 0;
+}
+```
+- space-around 정렬
+```css
+.s1 ul {
+    display: flex;
+    height: 300px;
+    background: gray;    
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+
+.s1 li {
+    flex-basis: 200px;    
+    flex-shrink: 0;
+}
+```
+
 #### align-self
+- 특정 Child item에 대한 정렬 옵션 설정
+  - "flex_alignment_item.png" 참조
+  - ``align-self`` 속성을 이용
+```css
+first-child {
+    align-self: stretch;
+}
+
+nth-child(2) {
+    align-self: stretch;
+}
+```
+```css
+.s1 ul {
+    display: flex;
+    background: gray;    
+    height: 300px;
+    align-items: center;
+}
+
+.s1 li {
+    flex-basis: 200px;    
+}
+
+.s1 li:nth-child(1) {
+    background: red;
+    align-self: flex-start;    
+}
+
+.s1 li:nth-child(2) {
+    background: green;
+    align-self: flex-end;    
+}
+
+.s1 li:nth-child(3) {
+    background: blue;
+}
+
+.s1 li:nth-child(4) {
+    background: yellow;
+}
+
+.s1 li:nth-child(5) {
+    background: lightblue;
+}
+```

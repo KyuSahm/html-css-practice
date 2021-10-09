@@ -10,29 +10,40 @@ body {
 
 .s1 ul {
     display: flex;
-    flex-direction: column;
+    height: 300px;
+    /*flex-direction: column;*/
     background: gray;    
-    justify-content: space-evenly;
+    /*justify-content: space-evenly;*/
     /*justify-content: space-around;*/
     /*justify-content: space-between;*/
     /*justify-content: center;*/
-    height: 500px;
+    
+    align-content: space-around;
+    /*align-items: center;*/
+    flex-wrap: wrap;
 }
 
 .s1 li {
-    
+    flex-basis: 200px;    
+    flex-shrink: 0;
 }
 
 .s1 li:nth-child(1) {
-    background: red;    
+    background: red;
+    /*align-self: flex-start;*/    
 }
 
 .s1 li:nth-child(2) {
     background: green;
+    /*align-self: flex-end;*/    
 }
 
 .s1 li:nth-child(3) {
     background: blue;
+    /*
+    height: 100px;
+    margin-top: 10px;
+    font-size: 100px;*/
 }
 
 .s1 li:nth-child(4) {
