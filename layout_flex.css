@@ -17,21 +17,26 @@
 }
 
 .s1 li:nth-child(1) {
-    background: red;    
+    background: red;
+    order: 4;    
 }
 
 .s1 li:nth-child(2) {
     background: green;
+    order: 2;    
 }
 
 .s1 li:nth-child(3) {
     background: blue;
+    order: 3;    
 }
 
 .s1 li:nth-child(4) {
     background: yellow;
+    order: 1;
 }
 
 .s1 li:nth-child(5) {
-    background: lightblue;    
+    background: lightblue;
+    order: 5;        
 }

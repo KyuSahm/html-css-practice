@@ -1558,3 +1558,49 @@ flex: 100px;
     flex-grow: 1;
 }
 ```
+
+#### Flex Ordering
+- 기본적으로 item들의 순서를 Tag를 나열한 순서대로 동작
+  - "flex_ordering_default.png" 참조
+- 사용자가 Flex을 이용해서 CSS의 수정만으로 Tag들의 순서를 바꿈
+  - "flex_ordering_1.png" 참조
+  - "flex_ordering_2.png" 참조
+```css
+@import url(css/reset.css);
+.s1 ul {
+    display: flex;
+    flex-flow:  column wrap;
+    background: gray;
+    height: 500px;
+}
+
+.s1 li {
+    flex: 0 0 300px;
+    flex-grow: 1;
+}
+
+.s1 li:nth-child(1) {
+    background: red;
+    order: 4;    
+}
+
+.s1 li:nth-child(2) {
+    background: green;
+    order: 2;    
+}
+
+.s1 li:nth-child(3) {
+    background: blue;
+    order: 3;    
+}
+
+.s1 li:nth-child(4) {
+    background: yellow;
+    order: 1;
+}
+
+.s1 li:nth-child(5) {
+    background: lightblue;
+    order: 5;        
+}
+```  
