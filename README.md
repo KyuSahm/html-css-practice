@@ -1,7 +1,8 @@
 # HTML and CSS
 ## 실습 환경 준비
-1) Visual Studio Code설치
-2) Visual Studio Code의 좌측에 위치한 "확장(Extension)" 메뉴에서 Live Studio 설치
+- Visual Studio Code설치
+- Visual Studio Code의 좌측에 위치한 "확장(Extension)" 메뉴
+  - Live Studio 설치
 
 ## HTTP 주요 요소
 - URI
@@ -1475,6 +1476,7 @@ flex: 100px;
 #### flex-direction
 - 부모 Tag에 ``display: flex;``를 명시하면, 기본적으로 자식 tag들이 수평으로 표시
 - flex가 적용되면, 너비를 다 채우던 ``<li>`` Tag가 content의 내용에 따라서 너비와 높이가 결정
+- "flex_direction.png" 참조
 - 수직과 수평의 방향 선택은 ``flex-direction`` 속성을 이용
   - ``flex-direction: row;`` :  수평방향으로 Tag들을 표시함
   - ``flex-direction: row-reverse;`` :  오른쪽에서 왼쪽 수평방향으로 Tag들을 표시함
@@ -1482,6 +1484,77 @@ flex: 100px;
   - ``flex-direction: column-reverse;`` :  아래에서 위로 수직방향으로 Tag들을 표시함
 
 #### flex-wrap
+- 기본적으로, Tag들이 한 개의 Row에 다 들어가지 못하면, 줄바꿈이 일어남
+- 기본값이 ``flex-wrap: wrap``
+  - "flex_wrap.png" 참조
+- ``flex-wrap: nowrap`` 옵션
+  - 줄바꿈이 발생하지 않음
+  - 슬라이딩을 통해서 끝으로 이동
+  - "flex_nowrap.png" 참조
+- ``flex-direction: column;``와 ``flex-direction: column-reverse;``일 경우, 기본적으로 wrap이 발생 안 함
+  - "flex_nowrap_column.png" 참조  
+- ``flex-direction: column;``와 ``flex-direction: column-reverse;``일 경우, 부모 Tag의 높이가 정해지면 발생 가능
+  - "flex_wrap_column.png" 참조
+  - 오른쪽으로 column 바꿈이 발생
+  - 아래의 코드에서는 item 클래스가 flex-box 클래스의 child라면, 각 Column마다 두 개의 item이 그려짐
+```css
+.flex-box {
+    border:1px solid gray;
+    display: flex;
+    flex-flow: column wrap;
+    height: 200px;
+}
+
+.item {
+    flex-basis: 100px;
+}
+```
+  - 아래의 코드처럼, 높이 방향으로 여백이 발생하면?
+    - ``flex-grow``의 기본값이 0이므로, 여백을 그냥 남겨둔다
+    - "flex_wrap_column_no_grow.png" 참조
+```css
+.flex-box {
+    border:1px solid gray;
+    display: flex;
+    flex-flow: column wrap;
+    height: 250px;
+}
+
+.item {
+    flex-basis: 100px;
+}
+```
+  - 여백을 채우고 싶으면?
+    - ``flex-grow``의 값을 지정
+    - "flex_wrap_column_grow.png" 참조
+```css
+.flex-box {
+    border:1px solid gray;
+    display: flex;
+    flex-flow: column wrap;
+    height: 250px;
+}
+
+.item {
+    flex-basis: 100px;
+    flex-grow: 1;
+}
+```
 
 #### flex-flow
+- ``flex-direction``와 ``flex-warp`` 속성을 한번에 표현
+- 상위 Container Tag에 설정
+- 아래의 예시처럼, ``flex-direction: column;``과 ``flex-wrap: wrap``을 동시에 표현 가능
+```css
+.flex-box {
+    border:1px solid gray;
+    display: flex;
+    flex-flow: column wrap;
+    height: 250px;
+}
 
+.item {
+    flex-basis: 100px;
+    flex-grow: 1;
+}
+```

@@ -1,0 +1,37 @@
+@import url(css/reset.css);
+.s1 ul {
+    display: flex;
+    /*flex-direction: row;*/
+    flex-flow:  column wrap;
+    /*flex-flow:  row nowrap;*/
+    /*flex-flow:  row wrap;*/
+    background: gray;
+    height: 500px;
+}
+
+.s1 li {
+    flex: 0 0 300px;
+    flex-grow: 1;    
+    /*flex: 0 1 300px;*/
+    /*flex: 100px;*/ /* means 1 1 100px */
+}
+
+.s1 li:nth-child(1) {
+    background: red;    
+}
+
+.s1 li:nth-child(2) {
+    background: green;
+}
+
+.s1 li:nth-child(3) {
+    background: blue;
+}
+
+.s1 li:nth-child(4) {
+    background: yellow;
+}
+
+.s1 li:nth-child(5) {
+    background: lightblue;    
+}
